@@ -1,0 +1,40 @@
+﻿---
+import Navbar from "../components/Navbar";
+import "../styles/App.css";
+import "../styles/index.css";
+import "../components/Navbar.css";
+
+const { lang = "sv", isHome = false, title = "Nelson Pena", description = "Product Designer med erfarenhet av Continuous Discovery, UX Research och Figma. Examensarbete pa Fortnox AB — Byraanalys." } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content="Nelson Pena — Product Designer" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://nelsonpenna.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nelsonpenna.netlify.app/og-image.png" />
+    <meta property="og:locale" content={lang === "sv" ? "sv_SE" : lang === "en" ? "en_GB" : "es_ES"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nelson Pena — Product Designer" />
+    <meta name="twitter:image" content="https://nelsonpenna.netlify.app/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class={"app-shell " + (isHome ? "app-shell--dark" : "app-shell--light")}>
+      <Navbar lang={lang} currentPath={currentPath} isHome={isHome} client:load />
+      <slot />
+    </div>
+  </body>
+</html>

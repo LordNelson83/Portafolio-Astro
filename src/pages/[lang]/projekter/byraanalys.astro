@@ -1,0 +1,247 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import "../../../pagesCSS/AhrMotorCase.css";
+
+export function getStaticPaths() {
+  return getLangPaths();
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const meta         = t("ahrMotor", "meta");
+const processSteps = t("ahrMotor", "processSteps");
+const quotes       = t("ahrMotor", "quotes");
+const ostBranches  = t("ahrMotor", "ostBranches");
+const teams        = t("ahrMotor", "teams");
+const statusSteps  = t("ahrMotor", "statusSteps");
+const a11yPoints   = t("ahrMotor", "a11yPoints");
+const roleTags     = t("ahrMotor", "roleTags");
+const skills       = t("ahrMotor", "skills");
+const pivotDiscarded = t("ahrMotor", "pivotDiscarded");
+const pivotKept      = t("ahrMotor", "pivotKept");
+
+const IMGS = [
+  { src: "/images/ahr_4.webp", alt: t("ahrMotor", "imgAlts")[0], caption: t("ahrMotor", "imgCaptions")[0] },
+  { src: "/images/ahr_5.webp", alt: t("ahrMotor", "imgAlts")[1], caption: t("ahrMotor", "imgCaptions")[1] },
+  { src: "/images/ahr_6.webp", alt: t("ahrMotor", "imgAlts")[2], caption: t("ahrMotor", "imgCaptions")[2] },
+  { src: "/images/ahr_7.webp", alt: t("ahrMotor", "imgAlts")[3], caption: t("ahrMotor", "imgCaptions")[3] },
+];
+---
+
+<BaseLayout lang={lang} isHome={false} title="Byraanalys — Nelson Pena">
+  <div class="cs-page">
+    <div class="cs-grain" aria-hidden="true" />
+
+    <nav class="cs-nav">
+      <a href={"/" + lang + "/grafiskproduktion"} class="cs-back">
+        <span class="cs-back__arrow">←</span>
+        <span>{t("ahrMotor", "back")}</span>
+      </a>
+      <span class="cs-nav__tag">{t("ahrMotor", "navTag")}</span>
+    </nav>
+
+    <header class="cs-hero cs-visible">
+      <div class="cs-hero__eyebrow">
+        <span>Fortnox</span>
+        <span class="cs-hero__dot" aria-hidden="true" />
+        <span>Chas Academy</span>
+      </div>
+      <h1 class="cs-hero__title">Byr&#229;analys</h1>
+      <p class="cs-hero__subtitle">{t("ahrMotor", "navTag")}</p>
+      <p class="cs-hero__lead">{t("ahrMotor", "heroLead")}</p>
+      <div class="cs-meta" role="list">
+        {meta.map((m) => (
+          <div class="cs-meta__item" role="listitem">
+            <span class="cs-meta__value">{m.value}</span>
+            <span class="cs-meta__label">{m.label}</span>
+          </div>
+        ))}
+      </div>
+      <div class="cs-hero__line" aria-hidden="true" />
+    </header>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "roleLabel")}</div>
+      <div class="cs-skills" style="margin-bottom:1rem">
+        {roleTags.map((tag) => (
+          <span class="cs-skill">{tag}</span>
+        ))}
+      </div>
+      <p class="cs-text">{t("ahrMotor", "roleText")}</p>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "problemLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "problemTitle")}</h2>
+      <div class="cs-section__body cs-section__body--2col">
+        <div>
+          <p class="cs-text">{t("ahrMotor", "problemP1")}</p>
+          <p class="cs-text">{t("ahrMotor", "problemP2")}</p>
+        </div>
+        <div class="cs-problem-box">
+          <p class="cs-problem-box__label">{t("ahrMotor", "problemBoxLabel")}</p>
+          <p class="cs-problem-box__text">{t("ahrMotor", "problemBoxText")}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "processLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "processTitle")}</h2>
+      <div class="cs-process">
+        {processSteps.map((s, i) => (
+          <div class="cs-process__step" style={"--i:" + i}>
+            <span class="cs-process__num">{s.num}</span>
+            <span class="cs-process__label">{s.label}</span>
+            <span class="cs-process__detail">{s.detail}</span>
+            {i < processSteps.length - 1 && (
+              <span class="cs-process__arrow" aria-hidden="true">→</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "insightsLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "insightsTitle")}</h2>
+      <p class="cs-text cs-text--intro">{t("ahrMotor", "insightsIntro")}</p>
+      <div class="cs-quotes">
+        {quotes.map((q, i) => (
+          <blockquote class="cs-quote" style={"--i:" + i}>
+            <p class="cs-quote__text">"{q.quote}"</p>
+            {q.note && <p class="cs-quote__note">{q.note}</p>}
+            <footer class="cs-quote__footer">
+              <span class="cs-quote__name">{q.name}</span>
+              <span class="cs-quote__company">{q.company}</span>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+      <div class="cs-insight-callout cs-visible">
+        <p class="cs-insight-callout__label">{t("ahrMotor", "calloutLabel")}</p>
+        <p class="cs-insight-callout__text">{t("ahrMotor", "calloutText")}</p>
+      </div>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "ostLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "ostTitle")}</h2>
+      <p class="cs-text">{t("ahrMotor", "ostText")}</p>
+      <div class="cs-ost">
+        <div class="cs-ost__root">
+          <p class="cs-ost__root-label">{t("ahrMotor", "ostRootLabel")}</p>
+          <p class="cs-ost__root-text">{t("ahrMotor", "ostRootText")}</p>
+        </div>
+        <div class="cs-ost__connector" aria-hidden="true" />
+        <div class="cs-ost__branches">
+          {ostBranches.map((b) => (
+            <div class="cs-ost__branch">
+              <span class="cs-ost__branch-num">{b.num}</span>
+              <p class="cs-ost__branch-title">{b.title}</p>
+              <p class="cs-ost__branch-desc">{b.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="cs-images">
+        {IMGS.map((img) => (
+          <div class="cs-image-wrap">
+            <img src={img.src} alt={img.alt} class="cs-image" loading="lazy" />
+            <p class="cs-image__caption">{img.caption}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "techLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "techTitle")}</h2>
+      <div class="cs-section__body cs-section__body--2col">
+        <div>
+          <p class="cs-text">{t("ahrMotor", "techP1")}</p>
+          <p class="cs-text">{t("ahrMotor", "techP2")}</p>
+        </div>
+        <div class="cs-teams">
+          {teams.map((team) => (
+            <div class="cs-team">
+              <span class="cs-team__name">{team.name}</span>
+              <span class="cs-team__role">{team.role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section cs-section--pivot cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "pivotLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "pivotTitle")}</h2>
+      <p class="cs-text cs-text--intro">{t("ahrMotor", "pivotIntro")}</p>
+      <div class="cs-pivot">
+        <div class="cs-pivot__card cs-pivot__card--discarded">
+          <p class="cs-pivot__card-label">{pivotDiscarded?.label}</p>
+          <h3 class="cs-pivot__card-title">{pivotDiscarded?.title}</h3>
+          <p class="cs-pivot__card-desc">{pivotDiscarded?.desc}</p>
+          <p class="cs-pivot__card-reason">{pivotDiscarded?.reason}</p>
+        </div>
+        <div class="cs-pivot__arrow" aria-hidden="true">→</div>
+        <div class="cs-pivot__card cs-pivot__card--kept">
+          <p class="cs-pivot__card-label">{pivotKept?.label}</p>
+          <h3 class="cs-pivot__card-title">{pivotKept?.title}</h3>
+          <p class="cs-pivot__card-desc">{pivotKept?.desc}</p>
+          <p class="cs-pivot__card-reason">{pivotKept?.reason}</p>
+        </div>
+      </div>
+      <p class="cs-pivot__note">{t("ahrMotor", "pivotNote")}</p>
+    </section>
+
+    <section class="cs-section cs-section--archived cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "statusLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "statusTitle")}</h2>
+      <p class="cs-archived-note">{t("ahrMotor", "statusArchivedNote")}</p>
+      <div class="cs-wip-steps">
+        {statusSteps.map((s) => (
+          <div class={"cs-wip-step" + (s.done ? " cs-wip-step--done" : "") + (s.active ? " cs-wip-step--active" : "")}>
+            <span class="cs-wip-step__dot" aria-hidden="true" />
+            <span class="cs-wip-step__label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "a11yLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "a11yTitle")}</h2>
+      <ul class="cs-a11y-list">
+        {a11yPoints.map((point) => (
+          <li class="cs-a11y-item">{point}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-section__label">{t("ahrMotor", "reflectionLabel")}</div>
+      <h2 class="cs-section__title">{t("ahrMotor", "reflectionTitle")}</h2>
+      <p class="cs-text">{t("ahrMotor", "reflectionP1")}</p>
+      <p class="cs-text">{t("ahrMotor", "reflectionP2")}</p>
+      <p class="cs-text">{t("ahrMotor", "reflectionP3")}</p>
+    </section>
+
+    <section class="cs-section cs-visible">
+      <div class="cs-skills">
+        {skills.map((sk) => (
+          <span class="cs-skill">{sk}</span>
+        ))}
+      </div>
+    </section>
+
+    <section class="cs-cta">
+      <p class="cs-cta__text">{t("ahrMotor", "ctaText")}</p>
+      <a href={"/" + lang + "/kontakta"} class="cs-cta__btn">{t("ahrMotor", "ctaBtn")}</a>
+    </section>
+
+  </div>
+</BaseLayout>
+

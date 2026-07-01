@@ -1,0 +1,745 @@
+/* ══════════════════════════════════════════════════════════
+   HOME  —  Implementado desde Figma: Portafolio_UX2026
+   Nodo: 2:228 · 1440w default
+   Cuenta: guardia1983@gmail.com
+   ══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ────────────────────────────────────────
+   HERO  —  Figma: Section (2:232)
+   1440 × 900 · bg var(--color/grey/12, #1E1E1E)
+   ──────────────────────────────────────── */
+.home-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Foto — Figma: Nelson Peña_bild (2:233)
+   aspect 578/945 · bottom -25% · left 0 · top 20% · max-width 835px */
+.hero-photo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 105%;
+  width: auto;
+  max-width: 58%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+  will-change: transform;
+  display: block;
+}
+
+/* Gradient overlay — Figma: Gradient (2:235)
+   linear-gradient(99.99deg,
+     rgba(30,30,30,0) 30%,
+     rgba(30,30,30,0.55) 59.615%,
+     rgba(30,30,30,0.92) 84.615%,
+     rgb(30,30,30) 100%) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    99.99deg,
+    rgba(var(--bg-primary-rgb, 30,30,30), 0)    30%,
+    rgba(var(--bg-primary-rgb, 30,30,30), 0.55) 59.615%,
+    rgba(var(--bg-primary-rgb, 30,30,30), 0.92) 84.615%,
+    var(--bg-primary)                           100%
+  );
+  pointer-events: none;
+}
+
+/* Grain — Figma: Image (2:239) · opacity 3.5%
+   SVG fractalNoise · bg-size 180px */
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* © 2026 — Figma: text (2:244)
+   Montserrat Medium 11px · rgba(255,255,255,0.35) · tracking 1.98px
+   top 116.25px (centrado verticalmente desde top 108px) · left 72px */
+.hero-index {
+  position: absolute;
+  top: 108px;
+  left: 72px;
+  z-index: 10;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.98px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  animation: fadeUp 1s 0.4s both;
+}
+
+/* Rol — Figma: Junior product Ux (2:249)
+   Montserrat SemiBold 11px · rgba(255,255,255,0.40) · tracking 1.98px
+   top 108px · right 72.89px */
+.hero-role {
+  position: absolute;
+  top: 108px;
+  right: 72px;
+  z-index: 10;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.98px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  animation: fadeUp 1s 0.6s both;
+}
+
+/* Nombre — Figma: Nelson Peña (2:403)
+   x 235 y 386.5 · width 1205 · height 127
+   Centrado verticalmente: top 43% del hero (386.5 / 900 ≈ 43%)
+   Alineado a la derecha con padding-right 72px */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0 72px;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+/* Figma: text "Nelson Peña" (2:258)
+   Playfair Display Bold · 144px · lh 126.72px · tracking -0.8px
+   color white / #FFA205 */
+/* Figma: "Nelson Peña" en UNA sola línea horizontal
+   Playfair Display Bold 144px · lh 126.72px · tracking -0.8px */
+.hero-name {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: clamp(64px, 10vw, 144px);
+  line-height: 126.72px;
+  margin: 0;
+  letter-spacing: -0.8px;
+  color: var(--text-heading);
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+/* Hereda font-size del padre .hero-name */
+.hero-name__first {
+  color: var(--text-heading);
+  animation: fadeUp 1s 0.5s both;
+}
+
+/* Figma: "Peña" → color #FFA205 */
+.hero-name__last {
+  color: #ffa205;
+  animation: fadeUp 1s 0.7s both;
+}
+
+/* Bio — Figma: Hej_text (2:265)
+   bottom 55.48px · right 72px · width 360px
+   gap 12px entre hijos · items-end */
+.hero-bio {
+  position: absolute;
+  bottom: 55px;
+  right: 72px;
+  width: 360px;
+  z-index: 10;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  animation: fadeUp 1s 0.9s both;
+}
+
+/* Figma: "Hej!" (2:267)
+   Montserrat Bold 11px · #FFA205 · tracking 2.2px · uppercase */
+.hero-bio__tag {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+}
+
+/* Figma: Description (2:271)
+   Montserrat Regular 13px · lh 23.33px · rgba(255,255,255,0.72)
+   text-right · pb 12.81px */
+.hero-bio p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 23.33px;
+  margin: 0;
+  text-align: right;
+  padding-bottom: 0;
+}
+
+/* Figma: Component 2 (2:276)
+   border-bottom rgba(255,162,5,0.5) 0.8px
+   Montserrat SemiBold 12px · white · tracking 1.44px · uppercase
+   gap 8px · pb 3.4px */
+.hero-bio__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 0.8px solid rgba(255, 162, 5, 0.5);
+  padding-bottom: 3.4px;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.hero-bio__cta:hover {
+  color: #ffa205;
+  border-color: #ffa205;
+}
+
+/* Scroll hint — Figma: Container (2:281)
+   left 50% · bottom 28.11px · gap 7.4px · flex-col · items-center */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7.4px;
+  animation: fadeUp 1.2s 1.2s both;
+}
+
+/* Figma: Vertical Divider (2:283)
+   width 1px · height 36px · gradient from #FFA205 → transparent */
+.hero-scroll-hint span {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, #ffa205, rgba(255, 162, 5, 0));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* Figma: "Scroll" (2:286)
+   Montserrat Regular 9px · rgba(255,255,255,0.30) · tracking 1.98px · uppercase
+   lh 13.5px */
+.hero-scroll-hint p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1.98px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 13.5px;
+}
+
+/* ────────────────────────────────────────
+   WORK SECTION  —  Figma: Section (2:292)
+   bg #1E1E1E · pt 100 pb 80 px 72 · gap 60px
+   ──────────────────────────────────────── */
+.home-work {
+  background-color: var(--bg-primary);
+  padding: 100px 72px 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Figma: Container (2:294) · gap 16px */
+.home-work__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Figma: "— Utvalda projekt" (2:297)
+   Montserrat SemiBold 11px · #FFA205 · tracking 2.2px · uppercase */
+.home-work__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+}
+
+/* Figma: Heading 2 (2:300)
+   Playfair Display Bold 86.4px · lh 86.4px · tracking -1.728px · white */
+.home-work__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 6vw, 86.4px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 86.4px;
+  letter-spacing: -1.728px;
+}
+
+/* Figma: List (2:304)
+   bg rgba(255,255,255,0.06) · border 1px rgba(255,255,255,0.06)
+   grid 2 cols · gap 1px */
+.home-work__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+  border: 1px solid var(--border);
+}
+
+/* Tile — Figma: Item (2:307, 2:318, 2:330, 2:342)
+   bg #1E1E1E · cada tile 646.7 × 194.9px */
+.tile {
+  background-color: var(--bg-primary);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity  0.35s var(--delay, 0s) ease,
+    transform 0.35s var(--delay, 0s) ease;
+}
+
+.tile--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Figma: Component 3 (2:308 etc.)
+   border 1px transparent · overflow hidden
+   padding: 45px 35.8px */
+.tile__link {
+  display: grid;
+  grid-template-areas:
+    "num   arrow"
+    "label label"
+    "sub   sub";
+  grid-template-columns: 1fr auto;
+  gap: 8px 0;
+  padding: 45px 35.8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  border: 1px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+  height: 194.9px;
+  box-sizing: border-box;
+}
+
+.tile__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--tile-accent, #ffa205);
+  transition: width 0.4s ease;
+}
+
+.tile__link:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--border-strong);
+}
+
+.tile__link:hover::after {
+  width: 100%;
+}
+
+/* Figma: num (I2:308;2:101)
+   Montserrat Bold 11px · tracking 1.65px · color var (naranja o blanco) */
+.tile__number {
+  grid-area: num;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+  color: var(--tile-accent, #ffa205);
+  align-self: center;
+  line-height: 16.5px;
+}
+
+/* Figma: arrow (I2:308;2:107)
+   Arial Narrow · 18px · rgba(255,255,255,0.20) */
+.tile__arrow {
+  grid-area: arrow;
+  font-size: 18px;
+  color: var(--text-muted);
+  align-self: center;
+  transition: color 0.3s, transform 0.3s;
+  line-height: 27px;
+}
+
+.tile__link:hover .tile__arrow {
+  color: var(--tile-accent, #ffa205);
+  transform: translateX(4px);
+}
+
+/* Figma: label (I2:308;2:103)
+   Playfair Display Bold 38px · lh 41.8px · tracking -0.38px · white
+   pt 8px */
+.tile__label {
+  grid-area: label;
+  font-family: "Playfair Display", serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 41.8px;
+  letter-spacing: -0.38px;
+  padding-top: 8px;
+}
+
+/* Figma: sub (I2:308;2:105)
+   Montserrat Medium 11px · rgba(255,255,255,0.38) · tracking 1.1px · uppercase
+   pt 4px */
+.tile__sub {
+  grid-area: sub;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding-top: 4px;
+  line-height: 16.5px;
+}
+
+/* Figma: Component 4 / "Se alla projekt" (2:354)
+   bg #FFA205 · Montserrat Bold 12px · #1E1E1E · tracking 2.16px
+   padding: 10px 36px 14px · width fit */
+.home-work__cta {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  background-color: #ffa205;
+  padding: 10px 36px 14px;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s;
+  line-height: 18px;
+}
+
+.home-work__cta:hover {
+  background-color: #ffffff;
+  color: #1e1e1e;
+}
+
+/* ────────────────────────────────────────
+   CONTACT STRIP  —  Figma: Section (2:356)
+   bg var(--color/grey/7, #111) · border-top rgba(255,255,255,0.06) 0.8px
+   pt 79.9 pb 80 pl 72 pr 71.99 · flex row space-between
+   ──────────────────────────────────────── */
+.home-contact {
+  background-color: var(--bg-secondary);
+  border-top: 0.8px solid var(--border);
+  padding: 80px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Figma: "Redo att bygga något extraordinary?" (2:361)
+   Playfair Display Bold 50.4px · lh 60.48px · tracking -1.008px · white */
+.home-contact__text {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 50.4px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 60.48px;
+  letter-spacing: -1.008px;
+}
+
+/* Figma: "extraordinary" → Bold Italic · #FFA205 */
+.home-contact__text em {
+  font-style: italic;
+  color: #ffa205;
+  font-weight: 700;
+}
+
+/* Figma: Component 4 / "Kontakta mig" (2:367)
+   bg #FFA205 · Montserrat Bold 12px · #1E1E1E · tracking 2.16px
+   padding 16px 44px */
+.home-contact__btn {
+  flex-shrink: 0;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  background-color: #ffa205;
+  padding: 16px 44px;
+  text-decoration: none;
+  transition: background-color 0.25s;
+  line-height: 18px;
+}
+
+.home-contact__btn:hover {
+  background-color: #ffffff;
+}
+
+/* ────────────────────────────────────────
+   ANIMATIONS
+   ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* ────────────────────────────────────────
+   TILE FEATURED — Projekter · full-width
+   ──────────────────────────────────────── */
+.tile--featured {
+  grid-column: 1 / -1;            /* ocupa toda la fila */
+  background-color: transparent;
+  border: 0.8px solid rgba(255, 162, 5, 0.22);
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity      0.35s var(--delay, 0s) ease,
+    transform    0.35s var(--delay, 0s) ease,
+    border-color 0.25s ease;
+}
+
+.tile--featured.tile--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Línea naranja deslizante en hover */
+.tile--featured::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 162, 5, 0.07) 0%,
+    rgba(255, 162, 5, 0.03) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.tile--featured:hover {
+  border-color: rgba(255, 162, 5, 0.55);
+  background-color: rgba(255, 162, 5, 0.04);
+}
+
+.tile--featured:hover::before { opacity: 1; }
+
+/* Link interior */
+.tile__link--featured {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 72px;
+  min-height: 120px;
+  text-decoration: none;
+}
+
+/* Columna izquierda: número + textos */
+.tile__featured-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+.tile__featured-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* El número 04 es más grande y destacado */
+.tile--featured .tile__number {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+  color: #ffa205;
+  opacity: 1;
+}
+
+/* El título ocupa más espacio */
+.tile--featured .tile__label {
+  font-size: clamp(32px, 4vw, 60px);
+  letter-spacing: -0.03em;
+  color: var(--text-heading);
+}
+
+.tile--featured .tile__sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Columna derecha: tag + CTA */
+.tile__featured-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.tile__featured-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205; /* WCAG 1.4.3: 7.6:1 sobre #1e1e1e — era rgba(255,162,5,0.55) → 3.4:1 ❌ */
+  border: 0.8px solid rgba(255, 162, 5, 0.22);
+  padding: 4px 14px;
+  line-height: 16px;
+}
+
+.tile__featured-cta {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted); /* WCAG 1.4.3: ~5.3:1 — era opacity:0.45 sobre white → 4.0:1 ❌ */
+  transition: color 0.22s ease, letter-spacing 0.22s ease;
+}
+
+.tile--featured:hover .tile__featured-cta {
+  letter-spacing: 2.8px;
+  color: #ffa205;
+}
+
+/* ────────────────────────────────────────
+   RESPONSIVE
+   ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-photo         { max-width: 62%; }
+  .hero-bio           { width: min(320px, 40vw); right: 5vw; }
+  .hero-index         { left: 5vw; }
+  .hero-role          { right: 5vw; }
+  .home-work          { padding: 100px 5vw 80px; }
+  .home-contact       { padding: 80px 5vw; }
+  .hero-name__first,
+  .hero-name__last    { font-size: clamp(64px, 9vw, 120px); }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    height: auto;
+    min-height: 100svh;
+    /* En mobile vuelve a flujo normal */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-photo {
+    position: relative;
+    max-width: 80%;
+    height: 60svh;
+    left: auto; bottom: auto;
+    margin: 0 auto;
+  }
+  /* En mobile: nombre vuelve a flujo, centrado */
+  .hero-content {
+    position: relative;
+    top: auto;
+    transform: none;
+    padding: 24px 6vw 16px;
+    justify-content: flex-start;
+    pointer-events: auto;
+  }
+  .hero-name {
+    flex-direction: column;
+    gap: 0;
+    line-height: 1;
+  }
+  .hero-name__first,
+  .hero-name__last { font-size: clamp(48px, 13vw, 88px); line-height: 0.9; }
+  .hero-bio {
+    position: relative;
+    bottom: auto; right: auto;
+    width: 90%;
+    text-align: left;
+    align-items: flex-start;
+    margin: 16px auto 48px;
+    padding: 0 6vw;
+  }
+  .hero-bio p { text-align: left; }
+  .hero-role  { display: none; }
+  .hero-index { top: 88px; left: 5vw; }
+  .home-work  { padding: 80px 5vw 60px; gap: 40px; }
+  .home-work__grid { grid-template-columns: 1fr; }
+  .home-work__title { line-height: 1; }
+  .home-contact {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5vw;
+  }
+  .home-contact__text { line-height: 1.3; letter-spacing: -0.02em; }
+}
+
+@media (max-width: 480px) {
+  .hero-photo           { max-width: 100%; height: 52svh; }
+  .tile__link           { padding: 28px 5vw; height: auto; }
+  .tile__label          { font-size: 26px; }
+  .tile__sub            { font-size: 9px; }
+  /* Tile featured mobile */
+  .tile__link--featured { flex-direction: column; align-items: flex-start; padding: 28px 5vw; gap: 16px; }
+  .tile__featured-right { align-items: flex-start; }
+  .tile--featured .tile__label { font-size: 32px; }
+  /* Stats */
+  .home-work__grid { grid-template-columns: 1fr; }
+  /* Contact */
+  .home-contact__text { font-size: clamp(24px, 7vw, 36px); }
+  .home-contact__btn  { width: 100%; text-align: center; }
+}

@@ -1,0 +1,38 @@
+/*
+ * WCAG PATCH — añade esto a tu App.css
+ * (o reemplaza las reglas de .app-main por .app-content)
+ * ─────────────────────────────────────────────────────
+ */
+
+/* Renombrar app-main → app-content (ya no es un <main>) */
+.app-content {
+  /* Copia aquí todo lo que tenías en .app-main */
+  flex: 1;
+  width: 100%;
+}
+
+/*
+ * Skip link — WCAG 2.4.1 Bypass Blocks
+ * Invisible por defecto, visible al recibir foco con Tab
+ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 0 0 6px 6px;
+  border: 2px solid #000;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+}
