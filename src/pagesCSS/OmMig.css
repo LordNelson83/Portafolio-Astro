@@ -1,0 +1,125 @@
+/* ══ OmMig ══ */
+.om-main { background-color: #1e1e1e; display: flex; flex-direction: row; align-items: flex-start; gap: 100px; min-height: 100vh; width: 100%; padding: 80px 72px 100px; box-sizing: border-box; }
+.om-left { flex: 1; max-width: 540px; flex-shrink: 0; }
+.om-text-block { display: flex; flex-direction: column; gap: 22px; }
+.om-h1 { font-family: "Playfair Display", serif; font-size: clamp(48px, 5.5vw, 80px); font-weight: 700; line-height: 1.2; color: #ffffff; margin: 0; }
+.om-h1-accent { color: #ffa205; }
+.om-h2 { font-family: "Montserrat", sans-serif; font-size: clamp(15px, 1.8vw, 22px); font-weight: 400; line-height: 1.55; color: rgba(255,255,255,0.72); margin: 0; }
+.om-paragraph { font-family: "Montserrat", sans-serif; font-size: 14px; font-weight: 400; line-height: 1.85; color: rgba(255,255,255,0.55); margin: 0; }
+.om-legend { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+.om-legend__title { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; color: #ffa205; margin: 0; }
+.om-legend__rows { display: flex; flex-direction: column; gap: 6px; }
+.om-legend__row { display: flex; align-items: center; gap: 10px; }
+.om-legend__label { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.40); letter-spacing: 0.5px; }
+.om-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 4px; }
+.om-skills-eyebrow { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; color: #ffa205; margin: 0; line-height: 16.5px; }
+.om-skills-eyebrow--ai { margin-top: 8px; }
+.om-skills-grid { display: grid; grid-template-columns: repeat(4, 88px); gap: 12px 10px; }
+.om-skills-grid--ai { grid-template-columns: repeat(4, 88px); }
+.om-skill-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0; transform: translateY(14px); transition: opacity 0.4s var(--delay,0s) ease, transform 0.4s var(--delay,0s) ease; }
+.skill--visible { opacity: 1; transform: translateY(0); }
+.om-skill-badge { width: 68px; height: 68px; border-radius: 16px; background-color: #2a2a2a; display: flex; align-items: center; justify-content: center; padding: 10px; box-sizing: border-box; box-shadow: 0 2px 10px rgba(0,0,0,0.4); transition: transform 0.22s ease, box-shadow 0.22s ease; flex-shrink: 0; }
+.om-skill-cell:hover .om-skill-badge { transform: translateY(-4px) scale(1.06); box-shadow: 0 10px 24px rgba(0,0,0,0.5); }
+.om-skill-icon { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25)); }
+.om-skill-name { font-family: "Montserrat", sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 84px; }
+.om-stars { display: flex; gap: 2px; align-items: center; }
+.om-star { width: 11px; height: 11px; flex-shrink: 0; }
+.om-star--on path { fill: #ffa205; }
+.om-star--off path { fill: rgba(255,255,255,0.18); }
+.om-skill-cell:hover .om-star--off path { fill: rgba(255,162,5,0.35); transition: fill 0.2s ease; }
+
+/* ── Certification badge (button) ── */
+.om-cert {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,162,5,0.22);
+  border-radius: 10px; padding: 12px 14px;
+  cursor: pointer; text-align: left; width: 100%;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.om-cert:hover { background: rgba(255,162,5,0.07); border-color: rgba(255,162,5,0.45); }
+.om-cert:focus-visible { outline: 2px solid #ffa205; outline-offset: 3px; }
+.om-cert__icon { font-size: 14px; color: #ffa205; line-height: 1; flex-shrink: 0; }
+.om-cert__body { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.om-cert__title { font-family: "Montserrat", sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #ffa205; margin: 0; }
+.om-cert__label { font-family: "Montserrat", sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.82); margin: 0; }
+.om-cert__date { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.38); margin: 0; }
+.om-cert__cta { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 500; color: rgba(255,162,5,0.6); white-space: nowrap; flex-shrink: 0; transition: color 0.2s ease; }
+.om-cert:hover .om-cert__cta { color: #ffa205; }
+
+/* ── Modal diplom ── */
+.om-diplom-backdrop {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.82);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+  animation: om-fade-in 0.2s ease;
+}
+@keyframes om-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Modal diplom — responsivo ── */
+.om-diplom-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(560px, calc(100vw - 24px));
+  height: min(calc(min(560px, calc(100vw - 24px)) * 1.414), 92vh);
+  background: #1e1e1e;
+  border: 1px solid rgba(255,162,5,0.2);
+  border-radius: 14px;
+  overflow: hidden;
+  animation: om-slide-up 0.25s ease;
+}
+@keyframes om-slide-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* botón cerrar flotante */
+.om-diplom-close {
+  position: absolute; top: 10px; right: 10px; z-index: 10;
+  background: rgba(20,20,20,0.8);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%;
+  width: 34px; height: 34px;
+  font-size: 20px; line-height: 1; color: rgba(255,255,255,0.85);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.18s ease, color 0.18s ease;
+  backdrop-filter: blur(6px);
+}
+.om-diplom-close:hover { background: rgba(255,162,5,0.2); color: #ffa205; }
+.om-diplom-close:focus-visible { outline: 2px solid #ffa205; outline-offset: 2px; }
+
+/* viewer ocupa todo el espacio restante */
+.om-diplom-viewer {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+/* iframe llena el viewer — scroll habilitado */
+.om-diplom-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* mobile portrait: casi pantalla completa */
+@media (max-width: 600px) {
+  .om-diplom-modal {
+    width: calc(100vw - 16px);
+    height: 90vh;
+    border-radius: 10px;
+  }
+}
+
+/* mobile landscape: altura limitada, scroll disponible */
+@media (max-height: 500px) {
+  .om-diplom-modal {
+    height: 96vh;
+  }
+}
+
+@media (max-width: 1300px) { .om-main { gap: 60px; padding: 80px 5vw 100px; } }
+@media (max-width: 1050px) { .om-main { flex-direction: column; gap: 60px; padding: 60px 5vw 80px; } .om-left { max-width: 100%; } .om-right { align-self: flex-start; width: 100%; } .om-skills-grid { grid-template-columns: repeat(5, 88px); } }
+@media (max-width: 600px) { .om-main { padding: 48px 5vw 64px; } .om-h1 { font-size: clamp(40px, 10vw, 64px); } .om-skills-grid { grid-template-columns: repeat(4, 80px); gap: 10px 8px; } .om-skill-badge { width: 60px; height: 60px; border-radius: 14px; } .om-skill-name { font-size: 8px; max-width: 72px; } .om-star { width: 10px; height: 10px; } }
+@media (max-width: 375px) { .om-main { padding: 40px 5vw 56px; gap: 40px; } .om-h1 { font-size: clamp(34px, 10vw, 52px); } .om-h2 { font-size: clamp(14px, 4vw, 18px); } .om-skills-grid { grid-template-columns: repeat(3, 80px); gap: 10px 8px; } .om-skills-grid--ai { grid-template-columns: repeat(3, 80px); } .om-skill-badge { width: 56px; height: 56px; } .om-skill-name { font-size: 7.5px; max-width: 68px; } }

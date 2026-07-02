@@ -1,0 +1,33 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../i18n/utils";
+import OmMigIsland from "../../components/OmMigIsland";
+import "../../pagesCSS/OmMig.css";
+
+export function getStaticPaths() {
+  return getLangPaths();
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const aboutData = {
+  greeting:    t("about", "greeting"),
+  h1a:         t("about", "h1a"),
+  sub:         t("about", "sub"),
+  p1:          t("about", "p1"),
+  p2:          t("about", "p2"),
+  p3:          t("about", "p3"),
+  certTitle:   t("about", "certTitle"),
+  certLabel:   t("about", "certLabel"),
+  certDate:    t("about", "certDate"),
+  skillsTitle: t("about", "skillsTitle"),
+  aiTitle:     t("about", "aiTitle"),
+  legendTitle: t("about", "legendTitle"),
+  legend:      t("about", "legend"),
+};
+---
+
+<BaseLayout lang={lang} isHome={false} title={"Om mig — Nelson Pena"}>
+  <OmMigIsland aboutData={aboutData} client:load />
+</BaseLayout>

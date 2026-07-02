@@ -1,0 +1,844 @@
+/* ══════════════════════════════════════════════════════════
+   PROJEKTER — Figma: 18:123
+   bg #1E1E1E · tokens idénticos a Home (2:228)
+   3 proyectos: Magasin · OAK Equipment · Solenia
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────────────────────────────────────
+   PÁGINA
+   ──────────────────────────────────────── */
+.pk-page {
+  position: relative;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+/* Grain — idéntico a Home */
+.pk-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* Palabra de fondo — "Projekt" stroke muy tenue */
+.pk-bg-word {
+  position: fixed;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(120px, 17vw, 280px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  white-space: nowrap;
+}
+
+.pk-page > *:not(.pk-grain):not(.pk-bg-word) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   HERO — Figma: Heading 1 · Montserrat Bold 32px · lh 48px
+   ════════════════════════════════════════ */
+.pk-hero {
+  padding: 80px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pk-hero__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+  animation: pkFadeUp 0.8s 0.2s both;
+}
+
+/* Figma H1: Montserrat Bold 32px — escalado para impacto editorial */
+.pk-hero__h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(56px, 9vw, 130px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-heading);
+  margin: 0;
+  letter-spacing: -0.03em;
+  animation: pkFadeUp 0.9s 0.3s both;
+}
+
+.pk-hero__h1 span { display: block; }
+
+.pk-hero__sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 540px;
+  animation: pkFadeUp 0.8s 0.5s both;
+}
+
+.pk-hero__line {
+  width: 0;
+  height: 2px;
+  background-color: #ffa205;
+  animation: pkExpandLine 0.9s 0.72s forwards;
+}
+
+@keyframes pkExpandLine { to { width: 72px; } }
+
+/* ════════════════════════════════════════
+   STATS — grid 4 cols · token Home
+   ════════════════════════════════════════ */
+.pk-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+  border-top: 0.8px solid var(--border);
+  border-bottom: 0.8px solid var(--border);
+  margin-bottom: 80px;
+}
+
+.pk-stat {
+  background-color: var(--bg-primary);
+  padding: 36px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   0.5s var(--delay, 0s) ease,
+    transform 0.5s var(--delay, 0s) ease,
+    background-color 0.25s ease;
+}
+
+.pk-stat.is-visible { opacity: 1; transform: translateY(0); }
+.pk-stat:hover { background-color: var(--bg-surface-hover); }
+
+.pk-stat__value {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 2.4vw, 40px);
+  font-weight: 700;
+  color: #ffa205;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pk-stat__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 16.5px;
+}
+
+/* ════════════════════════════════════════
+   PROYECTOS — lista vertical con separadores
+   ════════════════════════════════════════ */
+.pk-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 72px;
+}
+
+/* ── Proyecto individual ── */
+.pk-project {
+  padding: 64px 0;
+  border-top: 0.8px solid var(--border);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.pk-project.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ── Header del proyecto ── */
+.pk-project__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+
+.pk-project__num {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 4.5vw, 72px);
+  font-weight: 700;
+  color: var(--accent, #ffa205);
+  opacity: 0.18;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.pk-project__meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Figma: Heading 3 — Montserrat Bold 18.7px */
+.pk-project__school {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 16.5px;
+}
+
+/* Figma: Heading 2 — Montserrat Bold 24px · lh 36px */
+.pk-project__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 3vw, 46px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.pk-project__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pk-project__period {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.65px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 16.5px;
+}
+
+.pk-project__tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent, #ffa205);
+  border: 0.8px solid;
+  border-color: color-mix(in srgb, var(--accent, #ffa205) 35%, transparent);
+  padding: 3px 12px;
+  line-height: 16px;
+}
+
+.pk-project__divider {
+  width: 36px;
+  height: 1.5px;
+  background: var(--accent, #ffa205);
+  opacity: 0.55;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+/* ── Lead — frase de curiosidad ── */
+.pk-project__lead {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 36px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  padding-left: 108px;
+}
+
+/* ── Body — 2 columnas visual + texto ── */
+.pk-project__body {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  gap: 64px;
+  align-items: start;
+  padding-left: 108px;
+}
+
+/* OAK: galería más ancha */
+.pk-project__body--oak {
+  grid-template-columns: 55fr 45fr;
+}
+
+/* ── Proyectos sin imagen: solo texto full-width ── */
+.pk-project__body:only-child .pk-project__content,
+.pk-project__content:first-child {
+  grid-column: 1 / -1;
+}
+
+/* ════════════════════════════════════════
+   IMAGEN — proyecto Magasin
+   ════════════════════════════════════════ */
+.pk-visual {
+  position: sticky;
+  top: 120px;
+}
+
+.pk-visual__img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: rgba(255,255,255,0.04);
+}
+
+.pk-visual__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.88) saturate(0.85);
+  transition: filter 0.4s ease, transform 0.6s ease;
+}
+
+.pk-visual__img-wrap:hover .pk-visual__img {
+  filter: brightness(1) saturate(1);
+  transform: scale(1.02);
+}
+
+.pk-visual__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 56px 16px 16px;
+  background: linear-gradient(to top, rgba(17,17,17,0.88) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.pk-visual__overlay-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.pk-visual__overlay-year {
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent, #ffa205);
+}
+
+/* ════════════════════════════════════════
+   GALERÍA OAK — crossfade · nav · dots
+   ════════════════════════════════════════ */
+.pk-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 120px;
+}
+
+.pk-gallery__main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+
+.pk-gallery__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.pk-gallery__slide--active { opacity: 1; }
+
+.pk-gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.88);
+  transition: filter 0.3s;
+}
+
+.pk-gallery__slide--active:hover .pk-gallery__img { filter: brightness(1); }
+
+.pk-gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 14px 12px;
+  background: linear-gradient(to top, rgba(var(--bg-primary-rgb),0.85) 0%, transparent 100%);
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.pk-gallery__counter {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: "Playfair Display", serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #90a590;
+  z-index: 5;
+}
+
+.pk-gallery__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(var(--bg-primary-rgb),0.75);
+  border: 0.8px solid var(--border-strong);
+  color: var(--text-primary);
+  font-size: 22px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.pk-gallery__nav:hover {
+  background: rgba(144, 165, 144, 0.2);
+  border-color: rgba(144, 165, 144, 0.5);
+}
+
+.pk-gallery__nav--prev { left: 10px; }
+.pk-gallery__nav--next { right: 10px; }
+
+.pk-gallery__dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.pk-gallery__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.pk-gallery__dot--active {
+  background: #90a590;
+  transform: scale(1.45);
+}
+
+/* ════════════════════════════════════════
+   CONTENIDO TEXT — columna derecha
+   ════════════════════════════════════════ */
+.pk-project__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Figma: Item — Montserrat Regular 16px · lh 24px */
+.pk-project__desc {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Roles UX + UI ── */
+.pk-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.pk-role {
+  background: rgba(144, 165, 144, 0.06);
+  border: 0.8px solid rgba(144, 165, 144, 0.18);
+  padding: 18px 20px;
+}
+
+.pk-role__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #90a590;
+  margin: 0 0 12px;
+  line-height: 16px;
+}
+
+.pk-role__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pk-role__list li {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+  padding-left: 14px;
+  position: relative;
+}
+
+.pk-role__list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: #90a590;
+}
+
+/* ── Resultados de tests ── */
+.pk-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pk-results__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 16px;
+}
+
+.pk-results__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.pk-result {
+  background: var(--bg-surface);
+  border: 0.8px solid var(--border-strong);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.pk-result__score {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pk-result__text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Skills pills ── */
+.pk-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pk-skill {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 0.8px solid var(--border);
+  padding: 5px 12px;
+  line-height: 16px;
+  transition: border-color 0.2s, color 0.2s;
+  cursor: default;
+}
+
+.pk-skill:hover {
+  border-color: color-mix(in srgb, var(--accent, #ffa205) 50%, transparent);
+  color: var(--accent, #ffa205);
+}
+
+/* ── Links — CTA por proyecto ── */
+.pk-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pk-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 0.8px solid var(--border);
+  text-decoration: none;
+  overflow: hidden;
+  transition: padding-left 0.25s ease;
+}
+
+.pk-link:last-child { border-bottom: 0.8px solid var(--border); }
+
+.pk-link:hover { padding-left: 8px; }
+.pk-link:hover .pk-link__label { color: var(--accent, #ffa205); }
+.pk-link:hover .pk-link__icon  { transform: translate(3px, -3px); }
+
+.pk-link__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+  transition: color 0.22s;
+}
+
+.pk-link__icon {
+  font-size: 16px;
+  color: var(--accent, #ffa205);
+  line-height: 1;
+  transition: transform 0.22s ease;
+  flex-shrink: 0;
+}
+
+.pk-link__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: var(--accent, #ffa205);
+  transition: width 0.3s ease;
+}
+
+.pk-link:hover .pk-link__bar { width: 100%; }
+
+/* ════════════════════════════════════════
+   CTA FINAL — token home-contact
+   ════════════════════════════════════════ */
+.pk-cta {
+  background-color: var(--bg-secondary);
+  border-top: 0.8px solid var(--border);
+  padding: 80px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 80px;
+}
+
+.pk-cta__left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pk-cta__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+}
+
+.pk-cta__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 50px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.pk-cta__title em { font-style: italic; color: #ffa205; }
+
+.pk-cta__btn {
+  flex-shrink: 0;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  background-color: #ffa205;
+  padding: 16px 44px;
+  text-decoration: none;
+  line-height: 18px;
+  transition: background-color 0.25s ease;
+}
+
+.pk-cta__btn:hover { background-color: #ffffff; }
+
+/* ════════════════════════════════════════
+   ANIMACIONES
+   ════════════════════════════════════════ */
+/* ── Teléfonos muy pequeños (375px) ── */
+@media (max-width: 375px) {
+  .pk-hero__h1      { font-size: clamp(38px, 11vw, 56px); }
+  .pk-project__title { font-size: clamp(20px, 6vw, 28px); }
+  .pk-stat__value   { font-size: clamp(20px, 5vw, 28px); }
+  .pk-result__score { font-size: 20px; }
+}
+
+@keyframes pkFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .pk-stats               { grid-template-columns: repeat(2, 1fr); }
+  .pk-project__body,
+  .pk-project__body--oak  { grid-template-columns: 1fr; gap: 36px; }
+  .pk-project__lead       { padding-left: 0; }
+  .pk-project__body       { padding-left: 0; }
+  .pk-gallery,
+  .pk-visual              { position: static; }
+  .pk-roles               { grid-template-columns: 1fr; }
+  .pk-results__grid       { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .pk-hero    { padding: 60px 5vw 40px; }
+  .pk-stats   { grid-template-columns: repeat(2, 1fr); }
+  .pk-projects{ padding: 0 5vw; }
+  .pk-cta     { flex-direction: column; padding: 60px 5vw; align-items: flex-start; }
+}
+
+/* ══ AHR-Motor ────────────────────────────────────────── */
+.pk-project--ahr {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 32px;
+}
+
+.pk-project__tag--wip {
+  background: rgba(0, 166, 180, 0.15);
+  color: #00c8d8;
+  border: 1px solid rgba(0, 166, 180, 0.35);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 2px;
+  animation: wip-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes wip-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+.pk-project__body--ahr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  padding-left: 110px;
+  margin-top: 40px;
+}
+
+/* AHR text blocks — Objective / Bakgrund / Förslag */
+.pk-ahr-block {
+  margin-bottom: 28px;
+}
+
+.pk-ahr-block__label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent, #00c8d8);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.pk-ahr-block__text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+@media (max-width: 1024px) {
+  .pk-project__body--ahr { grid-template-columns: 1fr; gap: 36px; padding-left: 0; }
+}
+
+/* ────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .pk-stats              { grid-template-columns: 1fr; }
+  .pk-stat               { padding: 24px 5vw; }
+  .pk-results__grid      { grid-template-columns: 1fr; }
+  .pk-project__num       { font-size: 32px; min-width: 48px; }
+  .pk-project__header    { gap: 16px; }
+  .pk-project__title     { font-size: clamp(22px, 7vw, 32px); }
+  .pk-project__lead      { font-size: clamp(16px, 4.5vw, 20px); }
+  .pk-roles              { grid-template-columns: 1fr; }
+  .pk-gallery__nav       { width: 32px; height: 32px; font-size: 18px; }
+  .pk-cta                { padding: 48px 5vw; }
+  .pk-hero__h1           { font-size: clamp(44px, 13vw, 80px); }
+}

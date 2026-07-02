@@ -1,0 +1,92 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../i18n/utils";
+import "../../pagesCSS/Kontakta.css";
+
+export function getStaticPaths() {
+  return getLangPaths();
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const statsItems  = t("contact", "statsItems");
+const pitchPoints = t("contact", "pitchPoints");
+
+const CV_FILES = {
+  sv: { href: "/CV_Nelson_Pena.pdf",           download: "CV_Nelson_Pena.pdf",           label: "CV · Nelson Peña · Svenska" },
+  en: { href: "/Nelson_Pena_CV_English.pdf",    download: "Nelson_Pena_CV_English.pdf",   label: "CV · Nelson Peña · English" },
+  es: { href: "/Nelson_Pena_CV_Español.pdf",    download: "Nelson_Pena_CV_Español.pdf",   label: "CV · Nelson Peña · Español" },
+};
+const cv = CV_FILES[lang] ?? CV_FILES.sv;
+
+const SOCIAL = [
+  { id: "linkedin", label: t("contact", "linkedin"), sub: t("contact", "linkedinSub"), href: "https://www.linkedin.com/in/nelson-pe%C3%B1a-21881412a/" },
+  { id: "github",   label: t("contact", "github"),   sub: t("contact", "githubSub"),   href: "https://github.com/LordNelson83" },
+];
+---
+
+<BaseLayout lang={lang} isHome={true} title={"Kontakt — Nelson Pena"}>
+  <div class="kt-page">
+    <div class="kt-grain" aria-hidden="true" />
+    <div class="kt-bg-word" aria-hidden="true">Tack</div>
+
+    <header class="kt-hero js-reveal">
+      <p class="kt-hero__eyebrow">{t("contact", "eyebrow")}</p>
+      <h1 class="kt-hero__h1">{t("contact", "h1")}</h1>
+      <p class="kt-hero__sub">{t("contact", "sub")}</p>
+      <div class="kt-hero__line" aria-hidden="true" />
+    </header>
+
+    <div class="kt-stats" role="list">
+      {statsItems.map((s, i) => (
+        <div class="kt-stat js-reveal" role="listitem" style={"--delay:" + (i * 0.1) + "s"}>
+          <span class="kt-stat__value">{s.value}</span>
+          <span class="kt-stat__label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="kt-body">
+      <div class="kt-pitch js-reveal">
+        <p class="kt-pitch__label">{t("contact", "pitchLabel")}</p>
+        <ul class="kt-pitch__list">
+          {pitchPoints.map((point) => (
+            <li class="kt-pitch__item">{point}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="kt-links">
+        <a href={"mailto:" + t("contact", "email")} class="kt-link kt-link--email js-reveal">
+          <span class="kt-link__icon" aria-hidden="true">✉</span>
+          <span class="kt-link__label">{t("contact", "email")}</span>
+          <span class="kt-link__arrow" aria-hidden="true">↗</span>
+        </a>
+
+        {SOCIAL.map((s, i) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer"
+            class="kt-link js-reveal" style={"--delay:" + ((i + 1) * 0.1) + "s"}>
+            <span class="kt-link__label">{s.label}</span>
+            <span class="kt-link__sub">{s.sub}</span>
+            <span class="kt-link__arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+
+        <a href={cv.href} download={cv.download} class="kt-link kt-link--cv js-reveal">
+          <span class="kt-link__icon" aria-hidden="true">↓</span>
+          <span class="kt-link__label">{cv.label}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const obs = new IntersectionObserver(
+    (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add("is-visible")),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll(".js-reveal").forEach(el => obs.observe(el));
+  setTimeout(() => document.querySelectorAll(".js-reveal").forEach(el => el.classList.add("is-visible")), 1200);
+</script>

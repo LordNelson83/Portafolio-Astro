@@ -1,0 +1,730 @@
+/* ══════════════════════════════════════════════════════════
+   KONTAKTA — Figma: 14:86
+   bg #1E1E1E · tokens idénticos a Home (2:228)
+   "Tack!" · forma romboidal naranja · sin imágenes
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────────────────────────────────────
+   PÁGINA
+   ──────────────────────────────────────── */
+.kt-page {
+  position: relative;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+/* Grain — Figma 2:239 · opacity 3.5% */
+.kt-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* Palabra de fondo — "Tack" stroke muy tenue */
+.kt-bg-word {
+  position: fixed;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(180px, 28vw, 500px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  white-space: nowrap;
+}
+
+/* Todo el contenido sobre las capas de fondo */
+.kt-page > *:not(.kt-grain):not(.kt-bg-word) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   HERO — Figma: 14:105
+   Playfair Display Bold 64px · lh 96px
+   centrado — mismo sistema editorial
+   ════════════════════════════════════════ */
+.kt-hero {
+  padding: 80px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.kt-hero__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+  animation: ktFadeUp 0.8s 0.2s both;
+}
+
+/* Figma: Heading 1 — Playfair Bold 64px · lh 96px */
+.kt-hero__h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-heading);
+  margin: 0;
+  animation: ktFadeUp 0.9s 0.32s both;
+  letter-spacing: -0.02em;
+}
+
+/* Figma: Heading 2 — Montserrat Bold 20px · lh 32px */
+.kt-hero__sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(14px, 1.4vw, 20px);
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 640px;
+  animation: ktFadeUp 0.8s 0.5s both;
+}
+
+.kt-hero__line {
+  width: 0;
+  height: 2px;
+  background-color: #ffa205;
+  animation: ktExpandLine 0.9s 0.72s forwards;
+}
+
+@keyframes ktExpandLine { to { width: 72px; } }
+
+/* ════════════════════════════════════════
+   STATS — grid 4 cols · token Home tiles
+   ════════════════════════════════════════ */
+.kt-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+  border-top: 0.8px solid var(--border);
+  border-bottom: 0.8px solid var(--border);
+  margin-bottom: 80px;
+}
+
+.kt-stat {
+  background-color: var(--bg-primary);
+  padding: 36px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   0.5s var(--delay, 0s) ease,
+    transform 0.5s var(--delay, 0s) ease,
+    background-color 0.25s ease;
+}
+
+.kt-stat.is-visible { opacity: 1; transform: translateY(0); }
+.kt-stat:hover { background-color: var(--bg-surface-hover); }
+
+.kt-stat__value {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 2.4vw, 40px);
+  font-weight: 700;
+  color: #ffa205;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.kt-stat__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 16.5px;
+}
+
+/* ════════════════════════════════════════
+   BODY — 2 columnas: sidebar izq · forma der
+   ════════════════════════════════════════ */
+.kt-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 0 72px 80px;
+  align-items: center;
+}
+
+/* ════════════════════════════════════════
+   SIDEBAR — columna izquierda
+   ════════════════════════════════════════ */
+.kt-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s 0.1s ease, transform 0.65s 0.1s ease;
+}
+
+.kt-sidebar.is-visible { opacity: 1; transform: translateY(0); }
+
+.kt-sidebar__intro {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════
+   PITCH — propuesta de valor
+   ════════════════════════════════════════ */
+.kt-pitch {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kt-pitch__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+}
+
+.kt-pitch__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.kt-pitch__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kt-pitch__item {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  padding-left: 18px;
+  position: relative;
+}
+
+.kt-pitch__item::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ffa205;
+  font-size: 12px;
+  top: 3px;
+}
+
+/* ════════════════════════════════════════
+   AVAIL — disponibilidad + rol
+   ════════════════════════════════════════ */
+.kt-avail {
+  display: flex;
+  gap: 0;
+  border: 0.8px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.kt-avail__block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+}
+
+.kt-avail__sep {
+  width: 0.8px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.kt-avail__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: rgba(255,162,5,0.7);
+}
+
+.kt-avail__date {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.kt-avail__note {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ════════════════════════════════════════
+   CV BUTTON — CTA principal
+   ════════════════════════════════════════ */
+.kt-cv-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #ffa205;
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.22s ease;
+}
+
+.kt-cv-btn:hover { background: #e8920a; }
+
+.kt-cv-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.kt-cv-btn__icon {
+  font-size: 22px;
+  color: #1e1e1e;
+  line-height: 1;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.kt-cv-btn__texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kt-cv-btn__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1e1e;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.kt-cv-btn__sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(30,30,30,0.6);
+  letter-spacing: 0.5px;
+}
+
+/* barra blanca animada en hover */
+.kt-cv-btn__bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: rgba(30,30,30,0.3);
+  transition: width 0.3s ease;
+}
+
+.kt-cv-btn:hover .kt-cv-btn__bar { width: 100%; }
+
+/* ── Links editoriales ── */
+.kt-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.kt-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 0.8px solid var(--border);
+  text-decoration: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity   0.5s var(--delay, 0s) ease,
+    transform 0.5s var(--delay, 0s) ease;
+}
+
+.kt-link:last-child { border-bottom: 0.8px solid var(--border); }
+
+.kt-link.is-visible { opacity: 1; transform: translateX(0); }
+
+.kt-link:hover .kt-link__label { color: #ffa205; }
+.kt-link:hover .kt-link__icon  { transform: translate(3px, -3px); color: #ffa205; }
+
+.kt-link__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.kt-link__num {
+  font-family: "Playfair Display", serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+  color: rgba(255, 162, 5, 0.5);
+  min-width: 24px;
+  line-height: 1;
+}
+
+.kt-link__texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Figma: Montserrat SemiBold 20px · lh 30px */
+.kt-link__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  transition: color 0.22s ease;
+}
+
+.kt-link__sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 16px;
+}
+
+.kt-link__icon {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1;
+  transition: transform 0.22s ease, color 0.22s ease;
+}
+
+/* Barra naranja animada en hover */
+.kt-link__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background-color: #ffa205;
+  transition: width 0.3s ease;
+}
+
+.kt-link:hover .kt-link__bar { width: 100%; }
+
+/* ── Email destacado ── */
+.kt-email {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  border: 0.8px solid rgba(255, 162, 5, 0.25);
+  background: rgba(255, 162, 5, 0.04);
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.kt-email:hover {
+  background: rgba(255, 162, 5, 0.1);
+  border-color: rgba(255, 162, 5, 0.6);
+}
+
+.kt-email__icon {
+  font-size: 20px;
+  color: #ffa205;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Figma: Montserrat Regular 26px */
+.kt-email__address {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.2vw, 18px);
+  font-weight: 500;
+  color: var(--text-secondary);
+  flex: 1;
+  letter-spacing: -0.01em;
+  transition: color 0.22s ease;
+}
+
+.kt-email:hover .kt-email__address { color: #ffa205; }
+
+.kt-email__arrow {
+  font-size: 18px;
+  color: rgba(255, 162, 5, 0.6);
+  line-height: 1;
+  transition: transform 0.22s ease;
+  flex-shrink: 0;
+}
+
+.kt-email:hover .kt-email__arrow { transform: translateX(4px); }
+
+/* ════════════════════════════════════════
+   FORMA ROMBOIDAL — Figma: 14:118
+   Background+Shadow · gradiente naranja-dorado
+   border-radius: 269.5px 0 269.5px 0
+   box-shadow: 15px 8px 11px rgba(0,0,0,0.35)
+   ════════════════════════════════════════ */
+.kt-shape-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.75s 0.25s ease, transform 0.75s 0.25s ease;
+}
+
+.kt-shape-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Figma: 539×539px · border-radius 269.5px 0 269.5px 0 */
+.kt-shape {
+  position: relative;
+  width: clamp(340px, 37.4vw, 539px);
+  height: clamp(340px, 37.4vw, 539px);
+  border-radius: 50% 0 50% 0;   /* = 269.5px 0 269.5px 0 */
+  /* Figma gradient: #FFA205 → #FDA414 → #FBA723 → #D59123 → #AF7A23 → #95681E */
+  background: linear-gradient(
+    180deg,
+    #ffa205  0%,
+    #fda414  16.35%,
+    #fba723  34.45%,
+    #d59123  54.5%,
+    #af7a23  74.56%,
+    #95681e  100%
+  );
+  /* Figma: box-shadow 15px 8px 11px rgba(0,0,0,0.35) */
+  box-shadow: 15px 8px 11px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Contenido interior */
+.kt-shape__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.kt-shape__greeting {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  color: rgba(30, 30, 30, 0.9);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.kt-shape__tagline {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 600;
+  line-height: 1.6;
+  color: rgba(30, 30, 30, 0.75);
+  margin: 0;
+  max-width: 260px;
+}
+
+.kt-shape__tagline em {
+  font-style: italic;
+  color: rgba(30, 30, 30, 0.95);
+}
+
+.kt-shape__divider {
+  width: 40px;
+  height: 1.5px;
+  background: rgba(30, 30, 30, 0.35);
+}
+
+.kt-shape__note {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(30, 30, 30, 0.55);
+  margin: 0;
+}
+
+/* Letra decorativa "N" dentro de la forma */
+.kt-shape__deco {
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-family: "Playfair Display", serif;
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(30, 30, 30, 0.07);
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Sombra/reflejo debajo de la forma */
+.kt-shape__shadow {
+  width: 70%;
+  height: 40px;
+  background: radial-gradient(ellipse, rgba(255, 162, 5, 0.2) 0%, transparent 70%);
+  margin-top: -8px;
+  filter: blur(8px);
+}
+
+/* ════════════════════════════════════════
+   CTA FINAL — email gigante
+   ════════════════════════════════════════ */
+.kt-cta {
+  background-color: var(--bg-secondary);
+  border-top: 0.8px solid var(--border);
+  padding: 80px 72px;
+}
+
+.kt-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.kt-cta__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+}
+
+/* Email grande — CTA principal */
+.kt-cta__email {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 3.5vw, 52px);
+  font-weight: 700;
+  color: var(--text-heading);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+  padding-bottom: 4px;
+}
+
+.kt-cta__email:hover {
+  color: #ffa205;
+  border-bottom-color: #ffa205;
+}
+
+.kt-cta__copy {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin: 16px 0 0;
+  line-height: 16.5px;
+}
+
+/* ════════════════════════════════════════
+   ANIMACIONES
+   ════════════════════════════════════════ */
+@keyframes ktFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .kt-stats { grid-template-columns: repeat(2, 1fr); }
+  .kt-body  { grid-template-columns: 1fr; gap: 60px; }
+  .kt-shape-wrap { order: -1; }   /* forma arriba en tablet */
+}
+
+@media (max-width: 768px) {
+  .kt-hero  { padding: 60px 5vw 40px; }
+  .kt-stats { grid-template-columns: repeat(2, 1fr); }
+  .kt-body  { padding: 0 5vw 60px; }
+  .kt-cta   { padding: 60px 5vw; }
+}
+
+@media (max-width: 480px) {
+  .kt-stats   { grid-template-columns: 1fr; }
+  .kt-stat    { padding: 24px 5vw; }
+  .kt-hero    { padding: 48px 5vw 32px; }
+  .kt-hero__h1 { font-size: clamp(44px, 13vw, 72px); }
+  .kt-shape {
+    width: clamp(260px, 82vw, 340px);
+    height: clamp(260px, 82vw, 340px);
+    padding: 32px;
+  }
+  .kt-shape__greeting { font-size: clamp(28px, 8vw, 44px); }
+  .kt-cta  { padding: 48px 5vw; }
+  .kt-body { padding: 0 5vw 48px; gap: 40px; }
+  .kt-stats { margin-bottom: 48px; }
+  .kt-email__address { font-size: 12px; }
+  .kt-avail { flex-direction: column; }
+  .kt-avail__sep { width: 100%; height: 0.8px; }
+  .kt-avail__date { font-size: 13px; }
+}
