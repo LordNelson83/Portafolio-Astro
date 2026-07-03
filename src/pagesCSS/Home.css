@@ -1,15 +1,15 @@
-/* ══════════════════════════════════════════════════════════
-   HOME  —  Implementado desde Figma: Portafolio_UX2026
-   Nodo: 2:228 · 1440w default
+﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   HOME  â€”  Implementado desde Figma: Portafolio_UX2026
+   Nodo: 2:228 Â· 1440w default
    Cuenta: guardia1983@gmail.com
-   ══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
 
-/* ────────────────────────────────────────
-   HERO  —  Figma: Section (2:232)
-   1440 × 900 · bg var(--color/grey/12, #1E1E1E)
-   ──────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   HERO  â€”  Figma: Section (2:232)
+   1440 Ã— 900 Â· bg var(--color/grey/12, #1E1E1E)
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .home-hero {
   position: relative;
   width: 100%;
@@ -19,8 +19,8 @@
   overflow: hidden;
 }
 
-/* Foto — Figma: Nelson Peña_bild (2:233)
-   aspect 578/945 · bottom -25% · left 0 · top 20% · max-width 835px */
+/* Foto â€” Figma: Nelson PeÃ±a_bild (2:233)
+   aspect 578/945 Â· bottom -25% Â· left 0 Â· top 20% Â· max-width 835px */
 .hero-photo {
   position: absolute;
   left: 0;
@@ -35,7 +35,7 @@
   display: block;
 }
 
-/* Gradient overlay — Figma: Gradient (2:235)
+/* Gradient overlay â€” Figma: Gradient (2:235)
    linear-gradient(99.99deg,
      rgba(30,30,30,0) 30%,
      rgba(30,30,30,0.55) 59.615%,
@@ -55,8 +55,8 @@
   pointer-events: none;
 }
 
-/* Grain — Figma: Image (2:239) · opacity 3.5%
-   SVG fractalNoise · bg-size 180px */
+/* Grain â€” Figma: Image (2:239) Â· opacity 3.5%
+   SVG fractalNoise Â· bg-size 180px */
 .hero-grain {
   position: absolute;
   inset: 0;
@@ -67,9 +67,9 @@
   background-size: 180px;
 }
 
-/* © 2026 — Figma: text (2:244)
-   Montserrat Medium 11px · rgba(255,255,255,0.35) · tracking 1.98px
-   top 116.25px (centrado verticalmente desde top 108px) · left 72px */
+/* Â© 2026 â€” Figma: text (2:244)
+   Montserrat Medium 11px Â· rgba(255,255,255,0.35) Â· tracking 1.98px
+   top 116.25px (centrado verticalmente desde top 108px) Â· left 72px */
 .hero-index {
   position: absolute;
   top: 108px;
@@ -84,9 +84,9 @@
   animation: fadeUp 1s 0.4s both;
 }
 
-/* Rol — Figma: Junior product Ux (2:249)
-   Montserrat SemiBold 11px · rgba(255,255,255,0.40) · tracking 1.98px
-   top 108px · right 72.89px */
+/* Rol â€” Figma: Junior product Ux (2:249)
+   Montserrat SemiBold 11px Â· rgba(255,255,255,0.40) Â· tracking 1.98px
+   top 108px Â· right 72.89px */
 .hero-role {
   position: absolute;
   top: 108px;
@@ -101,9 +101,9 @@
   animation: fadeUp 1s 0.6s both;
 }
 
-/* Nombre — Figma: Nelson Peña (2:403)
-   x 235 y 386.5 · width 1205 · height 127
-   Centrado verticalmente: top 43% del hero (386.5 / 900 ≈ 43%)
+/* Nombre â€” Figma: Nelson PeÃ±a (2:403)
+   x 235 y 386.5 Â· width 1205 Â· height 127
+   Centrado verticalmente: top 43% del hero (386.5 / 900 â‰ˆ 43%)
    Alineado a la derecha con padding-right 72px */
 .hero-content {
   position: absolute;
@@ -118,11 +118,11 @@
   pointer-events: none;
 }
 
-/* Figma: text "Nelson Peña" (2:258)
-   Playfair Display Bold · 144px · lh 126.72px · tracking -0.8px
+/* Figma: text "Nelson PeÃ±a" (2:258)
+   Playfair Display Bold Â· 144px Â· lh 126.72px Â· tracking -0.8px
    color white / #FFA205 */
-/* Figma: "Nelson Peña" en UNA sola línea horizontal
-   Playfair Display Bold 144px · lh 126.72px · tracking -0.8px */
+/* Figma: "Nelson PeÃ±a" en UNA sola lÃ­nea horizontal
+   Playfair Display Bold 144px Â· lh 126.72px Â· tracking -0.8px */
 .hero-name {
   font-family: "Playfair Display", serif;
   font-weight: 700;
@@ -143,15 +143,15 @@
   animation: fadeUp 1s 0.5s both;
 }
 
-/* Figma: "Peña" → color #FFA205 */
+/* Figma: "PeÃ±a" â†’ color #FFA205 */
 .hero-name__last {
   color: #ffa205;
   animation: fadeUp 1s 0.7s both;
 }
 
-/* Bio — Figma: Hej_text (2:265)
-   bottom 55.48px · right 72px · width 360px
-   gap 12px entre hijos · items-end */
+/* Bio â€” Figma: Hej_text (2:265)
+   bottom 55.48px Â· right 72px Â· width 360px
+   gap 12px entre hijos Â· items-end */
 .hero-bio {
   position: absolute;
   bottom: 55px;
@@ -167,7 +167,7 @@
 }
 
 /* Figma: "Hej!" (2:267)
-   Montserrat Bold 11px · #FFA205 · tracking 2.2px · uppercase */
+   Montserrat Bold 11px Â· #FFA205 Â· tracking 2.2px Â· uppercase */
 .hero-bio__tag {
   display: block;
   font-family: "Montserrat", sans-serif;
@@ -180,8 +180,8 @@
 }
 
 /* Figma: Description (2:271)
-   Montserrat Regular 13px · lh 23.33px · rgba(255,255,255,0.72)
-   text-right · pb 12.81px */
+   Montserrat Regular 13px Â· lh 23.33px Â· rgba(255,255,255,0.72)
+   text-right Â· pb 12.81px */
 .hero-bio p {
   font-family: "Montserrat", sans-serif;
   font-size: 13px;
@@ -195,8 +195,8 @@
 
 /* Figma: Component 2 (2:276)
    border-bottom rgba(255,162,5,0.5) 0.8px
-   Montserrat SemiBold 12px · white · tracking 1.44px · uppercase
-   gap 8px · pb 3.4px */
+   Montserrat SemiBold 12px Â· white Â· tracking 1.44px Â· uppercase
+   gap 8px Â· pb 3.4px */
 .hero-bio__cta {
   display: inline-flex;
   align-items: center;
@@ -218,8 +218,8 @@
   border-color: #ffa205;
 }
 
-/* Scroll hint — Figma: Container (2:281)
-   left 50% · bottom 28.11px · gap 7.4px · flex-col · items-center */
+/* Scroll hint â€” Figma: Container (2:281)
+   left 50% Â· bottom 28.11px Â· gap 7.4px Â· flex-col Â· items-center */
 .hero-scroll-hint {
   position: absolute;
   bottom: 28px;
@@ -234,7 +234,7 @@
 }
 
 /* Figma: Vertical Divider (2:283)
-   width 1px · height 36px · gradient from #FFA205 → transparent */
+   width 1px Â· height 36px Â· gradient from #FFA205 â†’ transparent */
 .hero-scroll-hint span {
   display: block;
   width: 1px;
@@ -244,7 +244,7 @@
 }
 
 /* Figma: "Scroll" (2:286)
-   Montserrat Regular 9px · rgba(255,255,255,0.30) · tracking 1.98px · uppercase
+   Montserrat Regular 9px Â· rgba(255,255,255,0.30) Â· tracking 1.98px Â· uppercase
    lh 13.5px */
 .hero-scroll-hint p {
   font-family: "Montserrat", sans-serif;
@@ -257,10 +257,10 @@
   line-height: 13.5px;
 }
 
-/* ────────────────────────────────────────
-   WORK SECTION  —  Figma: Section (2:292)
-   bg #1E1E1E · pt 100 pb 80 px 72 · gap 60px
-   ──────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   WORK SECTION  â€”  Figma: Section (2:292)
+   bg #1E1E1E Â· pt 100 pb 80 px 72 Â· gap 60px
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .home-work {
   background-color: var(--bg-primary);
   padding: 100px 72px 80px;
@@ -270,15 +270,15 @@
   gap: 60px;
 }
 
-/* Figma: Container (2:294) · gap 16px */
+/* Figma: Container (2:294) Â· gap 16px */
 .home-work__header {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Figma: "— Utvalda projekt" (2:297)
-   Montserrat SemiBold 11px · #FFA205 · tracking 2.2px · uppercase */
+/* Figma: "â€” Utvalda projekt" (2:297)
+   Montserrat SemiBold 11px Â· #FFA205 Â· tracking 2.2px Â· uppercase */
 .home-work__eyebrow {
   font-family: "Montserrat", sans-serif;
   font-size: 11px;
@@ -291,7 +291,7 @@
 }
 
 /* Figma: Heading 2 (2:300)
-   Playfair Display Bold 86.4px · lh 86.4px · tracking -1.728px · white */
+   Playfair Display Bold 86.4px Â· lh 86.4px Â· tracking -1.728px Â· white */
 .home-work__title {
   font-family: "Playfair Display", serif;
   font-size: clamp(48px, 6vw, 86.4px);
@@ -303,8 +303,8 @@
 }
 
 /* Figma: List (2:304)
-   bg rgba(255,255,255,0.06) · border 1px rgba(255,255,255,0.06)
-   grid 2 cols · gap 1px */
+   bg rgba(255,255,255,0.06) Â· border 1px rgba(255,255,255,0.06)
+   grid 2 cols Â· gap 1px */
 .home-work__grid {
   list-style: none;
   padding: 0;
@@ -316,8 +316,8 @@
   border: 1px solid var(--border);
 }
 
-/* Tile — Figma: Item (2:307, 2:318, 2:330, 2:342)
-   bg #1E1E1E · cada tile 646.7 × 194.9px */
+/* Tile â€” Figma: Item (2:307, 2:318, 2:330, 2:342)
+   bg #1E1E1E Â· cada tile 646.7 Ã— 194.9px */
 .tile {
   background-color: var(--bg-primary);
   opacity: 0;
@@ -333,7 +333,7 @@
 }
 
 /* Figma: Component 3 (2:308 etc.)
-   border 1px transparent · overflow hidden
+   border 1px transparent Â· overflow hidden
    padding: 45px 35.8px */
 .tile__link {
   display: grid;
@@ -375,7 +375,7 @@
 }
 
 /* Figma: num (I2:308;2:101)
-   Montserrat Bold 11px · tracking 1.65px · color var (naranja o blanco) */
+   Montserrat Bold 11px Â· tracking 1.65px Â· color var (naranja o blanco) */
 .tile__number {
   grid-area: num;
   font-family: "Montserrat", sans-serif;
@@ -388,7 +388,7 @@
 }
 
 /* Figma: arrow (I2:308;2:107)
-   Arial Narrow · 18px · rgba(255,255,255,0.20) */
+   Arial Narrow Â· 18px Â· rgba(255,255,255,0.20) */
 .tile__arrow {
   grid-area: arrow;
   font-size: 18px;
@@ -404,7 +404,7 @@
 }
 
 /* Figma: label (I2:308;2:103)
-   Playfair Display Bold 38px · lh 41.8px · tracking -0.38px · white
+   Playfair Display Bold 38px Â· lh 41.8px Â· tracking -0.38px Â· white
    pt 8px */
 .tile__label {
   grid-area: label;
@@ -418,7 +418,7 @@
 }
 
 /* Figma: sub (I2:308;2:105)
-   Montserrat Medium 11px · rgba(255,255,255,0.38) · tracking 1.1px · uppercase
+   Montserrat Medium 11px Â· rgba(255,255,255,0.38) Â· tracking 1.1px Â· uppercase
    pt 4px */
 .tile__sub {
   grid-area: sub;
@@ -433,8 +433,8 @@
 }
 
 /* Figma: Component 4 / "Se alla projekt" (2:354)
-   bg #FFA205 · Montserrat Bold 12px · #1E1E1E · tracking 2.16px
-   padding: 10px 36px 14px · width fit */
+   bg #FFA205 Â· Montserrat Bold 12px Â· #1E1E1E Â· tracking 2.16px
+   padding: 10px 36px 14px Â· width fit */
 .home-work__cta {
   display: inline-block;
   align-self: flex-start;
@@ -456,11 +456,11 @@
   color: #1e1e1e;
 }
 
-/* ────────────────────────────────────────
-   CONTACT STRIP  —  Figma: Section (2:356)
-   bg var(--color/grey/7, #111) · border-top rgba(255,255,255,0.06) 0.8px
-   pt 79.9 pb 80 pl 72 pr 71.99 · flex row space-between
-   ──────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   CONTACT STRIP  â€”  Figma: Section (2:356)
+   bg var(--color/grey/7, #111) Â· border-top rgba(255,255,255,0.06) 0.8px
+   pt 79.9 pb 80 pl 72 pr 71.99 Â· flex row space-between
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .home-contact {
   background-color: var(--bg-secondary);
   border-top: 0.8px solid var(--border);
@@ -472,8 +472,8 @@
   flex-wrap: wrap;
 }
 
-/* Figma: "Redo att bygga något extraordinary?" (2:361)
-   Playfair Display Bold 50.4px · lh 60.48px · tracking -1.008px · white */
+/* Figma: "Redo att bygga nÃ¥got extraordinary?" (2:361)
+   Playfair Display Bold 50.4px Â· lh 60.48px Â· tracking -1.008px Â· white */
 .home-contact__text {
   font-family: "Playfair Display", serif;
   font-size: clamp(28px, 3.5vw, 50.4px);
@@ -484,7 +484,7 @@
   letter-spacing: -1.008px;
 }
 
-/* Figma: "extraordinary" → Bold Italic · #FFA205 */
+/* Figma: "extraordinary" â†’ Bold Italic Â· #FFA205 */
 .home-contact__text em {
   font-style: italic;
   color: #ffa205;
@@ -492,7 +492,7 @@
 }
 
 /* Figma: Component 4 / "Kontakta mig" (2:367)
-   bg #FFA205 · Montserrat Bold 12px · #1E1E1E · tracking 2.16px
+   bg #FFA205 Â· Montserrat Bold 12px Â· #1E1E1E Â· tracking 2.16px
    padding 16px 44px */
 .home-contact__btn {
   flex-shrink: 0;
@@ -514,9 +514,9 @@
   background-color: #ffffff;
 }
 
-/* ────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    ANIMATIONS
-   ──────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -527,9 +527,9 @@
   50%       { opacity: 1;   transform: scaleY(1.15); }
 }
 
-/* ────────────────────────────────────────
-   TILE FEATURED — Projekter · full-width
-   ──────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   TILE FEATURED â€” Projekter Â· full-width
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .tile--featured {
   grid-column: 1 / -1;            /* ocupa toda la fila */
   background-color: transparent;
@@ -550,7 +550,7 @@
   transform: translateY(0);
 }
 
-/* Línea naranja deslizante en hover */
+/* LÃ­nea naranja deslizante en hover */
 .tile--featured::before {
   content: "";
   position: absolute;
@@ -584,7 +584,7 @@
   text-decoration: none;
 }
 
-/* Columna izquierda: número + textos */
+/* Columna izquierda: nÃºmero + textos */
 .tile__featured-left {
   display: flex;
   align-items: center;
@@ -598,7 +598,7 @@
   gap: 6px;
 }
 
-/* El número 04 es más grande y destacado */
+/* El nÃºmero 04 es mÃ¡s grande y destacado */
 .tile--featured .tile__number {
   font-size: 13px;
   font-weight: 700;
@@ -607,7 +607,7 @@
   opacity: 1;
 }
 
-/* El título ocupa más espacio */
+/* El tÃ­tulo ocupa mÃ¡s espacio */
 .tile--featured .tile__label {
   font-size: clamp(32px, 4vw, 60px);
   letter-spacing: -0.03em;
@@ -638,7 +638,7 @@
   font-weight: 700;
   letter-spacing: 2.2px;
   text-transform: uppercase;
-  color: #ffa205; /* WCAG 1.4.3: 7.6:1 sobre #1e1e1e — era rgba(255,162,5,0.55) → 3.4:1 ❌ */
+  color: #ffa205; /* WCAG 1.4.3: 7.6:1 sobre #1e1e1e â€” era rgba(255,162,5,0.55) â†’ 3.4:1 âŒ */
   border: 0.8px solid rgba(255, 162, 5, 0.22);
   padding: 4px 14px;
   line-height: 16px;
@@ -650,7 +650,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--text-muted); /* WCAG 1.4.3: ~5.3:1 — era opacity:0.45 sobre white → 4.0:1 ❌ */
+  color: var(--text-muted); /* WCAG 1.4.3: ~5.3:1 â€” era opacity:0.45 sobre white â†’ 4.0:1 âŒ */
   transition: color 0.22s ease, letter-spacing 0.22s ease;
 }
 
@@ -659,9 +659,9 @@
   color: #ffa205;
 }
 
-/* ────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    RESPONSIVE
-   ──────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 1024px) {
   .hero-photo         { max-width: 62%; }
   .hero-bio           { width: min(320px, 40vw); right: 5vw; }
@@ -743,3 +743,34 @@
   .home-contact__text { font-size: clamp(24px, 7vw, 36px); }
   .home-contact__btn  { width: 100%; text-align: center; }
 }
+
+/* Hero bio restructurado */
+.hero-bio__headline {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.45;
+  margin: 0 0 8px;
+}
+
+.hero-bio__subtext {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 10px;
+}
+
+.hero-bio__tagline {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin-bottom: 16px;
+}
+
