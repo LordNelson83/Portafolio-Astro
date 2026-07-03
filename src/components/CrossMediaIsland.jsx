@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "../pagesCSS/crossMedia.css";
+import "../pagesCSS/CrossMedia.css";
 
 
 export default function CrossMediaIsland({ cm, lang }) {
