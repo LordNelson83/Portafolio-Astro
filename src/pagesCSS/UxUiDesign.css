@@ -1,0 +1,460 @@
+/* ══════════════════════════════════════════════════════════
+   PROFIL  —  Figma: 8:57 · "UX/UI Design & Frontend"
+   Sistema de tokens idéntico a Home (2:228)
+   bg #1E1E1E · grain · bg-word · jerarquía editorial fuerte
+   ══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ────────────────────────────────────────
+   PÁGINA — bg #1E1E1E idéntico a Home
+   Override del app-shell--light del App.jsx
+   ──────────────────────────────────────── */
+.profil-page {
+  position: relative;
+  background-color: var(--bg-primary);
+  margin: -1px;
+  min-height: calc(100vh - 104px);
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+/* ── Override global del shell cuando estamos en /profil ── */
+.app-shell--light:has(.profil-page) {
+  background-color: #1e1e1e;
+}
+
+/* ── Grain — Figma Image (2:239) · opacity 3.5% ── */
+.profil-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* ── Palabra de fondo — imagen de muy baja opacidad ──
+   "UX" en Playfair gigante, opacity ~2.5%, fija al centro */
+.profil-bg-word {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(280px, 38vw, 560px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  white-space: nowrap;
+}
+
+/* ── Todos los hijos del contenido sobre las capas de fondo ── */
+.profil-page > *:not(.profil-grain):not(.profil-bg-word) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   HERO — Figma: Heading 1 (8:75 · 8:76)
+   Playfair Display Bold 150px · lh 225px
+   "UX/UI Design &\nFrontend"
+   ════════════════════════════════════════ */
+.profil-hero {
+  padding: 80px 72px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Eyebrow — token idéntico a Home work__eyebrow */
+.profil-hero__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+  animation: fadeUp 0.8s 0.2s both;
+}
+
+/* Figma: 150px · lh 225px · Playfair Display Bold */
+.profil-hero__h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(64px, 10.4vw, 150px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-heading);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-hero__h1 span:first-child {
+  display: block;
+  animation: fadeUp 0.9s 0.3s both;
+}
+
+.profil-hero__h1 span:last-child {
+  display: block;
+  animation: fadeUp 0.9s 0.5s both;
+}
+
+/* "Frontend" — itálica naranja, máxima jerarquía */
+.profil-hero__h1 em {
+  font-style: italic;
+  color: #ffa205;
+}
+
+/* Sub — rol + institución */
+.profil-hero__sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.98px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 16.5px;
+  animation: fadeUp 0.8s 0.65s both;
+}
+
+/* Línea decorativa naranja */
+.profil-hero__accent-line {
+  width: 0;
+  height: 2px;
+  background-color: #ffa205;
+  animation: expandLine 0.9s 0.85s forwards;
+  margin-top: 4px;
+}
+
+@keyframes expandLine {
+  to { width: 72px; }
+}
+
+/* ════════════════════════════════════════
+   STATS — mismo grid de 4 que Work tiles
+   gap: 1px · bg rgba(255,255,255,0.06)
+   ════════════════════════════════════════ */
+.profil-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+  border-top: 0.8px solid var(--border);
+  border-bottom: 0.8px solid var(--border);
+  margin-bottom: 80px;
+}
+
+.profil-stat {
+  background-color: var(--bg-primary);
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   0.5s var(--delay, 0s) ease,
+    transform 0.5s var(--delay, 0s) ease,
+    background-color 0.25s ease;
+}
+
+.profil-stat.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.profil-stat:hover {
+  background-color: var(--bg-surface-hover);
+}
+
+/* Valor — Playfair Display Bold naranja */
+.profil-stat__value {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 3.3vw, 52px);
+  font-weight: 700;
+  color: #ffa205;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Etiqueta — Montserrat Medium uppercase */
+.profil-stat__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 16.5px;
+}
+
+/* ════════════════════════════════════════
+   SECCIONES — Figma: Main (8:73) + (9:49)
+   2 columnas: izq = num + header · der = body
+   border-top 0.8px rgba(255,255,255,0.08)
+   ════════════════════════════════════════ */
+.profil-sections {
+  padding: 0 72px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-section {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 64px;
+  padding: 72px 0;
+  border-top: 0.8px solid var(--border);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity   0.65s var(--delay, 0s) ease,
+    transform 0.65s var(--delay, 0s) ease;
+}
+
+.profil-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Columna izquierda ── */
+.profil-section__left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Número — naranja · Playfair Bold 11px */
+.profil-section__num {
+  font-family: "Playfair Display", serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+  color: #ffa205;
+  line-height: 16.5px;
+}
+
+.profil-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Eyebrow pequeño — token Home */
+.profil-section__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: rgba(255, 162, 5, 0.65);
+  margin: 0;
+  line-height: 16.5px;
+}
+
+.profil-section__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Institución — blanco 40% */
+.profil-section__institution {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 16.5px;
+}
+
+/* Figma: heading implícito — Playfair Display Bold grande */
+.profil-section__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Divisor naranja corto */
+.profil-section__divider {
+  width: 36px;
+  height: 1.5px;
+  background: rgba(255, 162, 5, 0.55);
+}
+
+/* ── Columna derecha — párrafos ── */
+.profil-section__right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 4px;
+}
+
+/* Figma: Inter Medium 14px · lh 21px
+   Adaptado al sistema oscuro */
+.profil-section__para {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Párrafo líder — más visible */
+.profil-section__para--lead {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Tag de categoría — borde naranja sutil */
+.profil-section__tag {
+  align-self: flex-start;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 162, 5, 0.55);
+  border: 0.8px solid rgba(255, 162, 5, 0.22);
+  padding: 6px 16px;
+  line-height: 16px;
+  margin-top: 4px;
+}
+
+/* ════════════════════════════════════════
+   CTA — Figma: Section (2:356) home-contact
+   bg #111111 · border-top · flex row
+   ════════════════════════════════════════ */
+.profil-cta {
+  background-color: var(--bg-secondary);
+  border-top: 0.8px solid var(--border);
+  padding: 80px 72px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.profil-cta__left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Eyebrow CTA */
+.profil-cta__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+}
+
+/* Título CTA — mismo token que home-contact__text */
+.profil-cta__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 50.4px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.profil-cta__title em {
+  font-style: italic;
+  color: #ffa205;
+}
+
+/* Botón — token idéntico a home-contact__btn */
+.profil-cta__btn {
+  flex-shrink: 0;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  background-color: #ffa205;
+  padding: 16px 44px;
+  text-decoration: none;
+  line-height: 18px;
+  transition: background-color 0.25s ease;
+}
+
+.profil-cta__btn:hover {
+  background-color: #ffffff;
+}
+
+/* ════════════════════════════════════════
+   ANIMACIONES — mismo sistema que Home
+   ════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .profil-stats   { grid-template-columns: repeat(2, 1fr); }
+  .profil-section { grid-template-columns: 260px 1fr; gap: 40px; }
+}
+
+@media (max-width: 900px) {
+  .profil-hero     { padding: 60px 5vw 48px; }
+  .profil-sections { padding: 0 5vw; }
+  .profil-section  {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 48px 0;
+  }
+  .profil-section__num { display: none; }
+  .profil-cta { padding: 60px 5vw; }
+}
+
+@media (max-width: 600px) {
+  .profil-stats { grid-template-columns: repeat(2, 1fr); }
+  .profil-stat  { padding: 28px 5vw; }
+  .profil-cta   { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 420px) {
+  .profil-stats { grid-template-columns: 1fr; }
+  .profil-hero  { padding: 48px 5vw 36px; }
+  .profil-cta   { padding: 48px 5vw; }
+}
+
+@media (max-width: 375px) {
+  .profil-hero__h1    { font-size: clamp(38px, 11vw, 60px); }
+  .profil-stat__value { font-size: clamp(20px, 5.5vw, 30px); }
+  .profil-section__title { font-size: clamp(20px, 6vw, 28px); }
+  .profil-sections    { padding: 0 5vw; }
+  .profil-section     { padding: 36px 0; gap: 20px; }
+  .profil-stats       { margin-bottom: 48px; }
+}

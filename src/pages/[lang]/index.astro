@@ -58,7 +58,7 @@ const TILES = [
     <section class="home-work" aria-labelledby="work-heading">
       <div class="home-work__header">
         <p class="home-work__eyebrow">{t("home", "eyebrow")}</p>
-        <h2 class="home-work__title" id="work-heading">360 Design</h2>
+        <h2 class="home-work__title" id="work-heading">360&#176; Design</h2>
       </div>
       <ul class="home-work__grid" role="list">
         <li class="tile tile--featured js-tile" style={"--tile-accent:" + FEATURED_TILE.accent + ";--delay:0s"}>
@@ -82,7 +82,7 @@ const TILES = [
               <span class="tile__number" aria-hidden="true">{tile.num}</span>
               <span class="tile__label">{tile.label}</span>
               <span class="tile__sub">{tile.sub}</span>
-              <span class="tile__arrow" aria-hidden="true">-></span>
+              <span class="tile__arrow" aria-hidden="true">&#8594;</span>
             </a>
           </li>
         ))}
@@ -116,5 +116,9 @@ const TILES = [
   tiles.forEach(el => obs.observe(el));
   setTimeout(() => tiles.forEach(el => el.classList.add("tile--visible")), 1200);
 </script>
+
+
+
+
 
 

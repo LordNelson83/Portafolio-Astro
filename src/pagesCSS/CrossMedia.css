@@ -1,0 +1,699 @@
+/* ══════════════════════════════════════════════════════════
+   CROSS MEDIA DESIGN — Figma: 13:67
+   Layout editorial: apertura full-width · 2 cols asimétricas
+   bg #1E1E1E · tokens idénticos a Home (2:228)
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────────────────────────────────────
+   PÁGINA
+   ──────────────────────────────────────── */
+.cm-page {
+  position: relative;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+/* Grain — Figma 2:239 · opacity 3.5% */
+.cm-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* Palabra de fondo — "Cross" stroke muy tenue */
+.cm-bg-word {
+  position: fixed;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(140px, 19vw, 320px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  white-space: nowrap;
+}
+
+/* Todo el contenido sobre las capas de fondo */
+.cm-page > *:not(.cm-grain):not(.cm-bg-word) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   HERO — Figma: 13:87 · 150px · lh 225px
+   ════════════════════════════════════════ */
+.cm-hero {
+  padding: 80px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cm-hero__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+  animation: cmFadeUp 0.8s 0.2s both;
+}
+
+.cm-hero__h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(56px, 10.4vw, 150px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-heading);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-hero__h1 span:first-child {
+  display: block;
+  animation: cmFadeUp 0.9s 0.3s both;
+}
+
+.cm-hero__h1 span:last-child {
+  display: block;
+  animation: cmFadeUp 0.9s 0.48s both;
+}
+
+/* "Design" itálica naranja */
+.cm-hero__h1 em {
+  font-style: italic;
+  color: #ffa205;
+}
+
+/* Figma H2 + H3 en línea — jerarquía horizontal */
+.cm-hero__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: cmFadeUp 0.8s 0.62s both;
+}
+
+/* Figma: Heading 2 (13:92) — Fridhems Folkhögskolan 46px */
+.cm-hero__school {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(20px, 2.8vw, 40px);
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.cm-hero__sep {
+  font-size: 20px;
+  color: rgba(255, 162, 5, 0.5);
+  line-height: 1;
+}
+
+/* Figma: Heading 3 (13:97) — 2007-2009 26px */
+.cm-hero__period {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(14px, 1.6vw, 24px);
+  font-weight: 700;
+  color: #ffa205;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cm-hero__line {
+  width: 0;
+  height: 2px;
+  background-color: #ffa205;
+  animation: cmExpandLine 0.9s 0.82s forwards;
+  margin-top: 2px;
+}
+
+@keyframes cmExpandLine { to { width: 72px; } }
+
+/* ════════════════════════════════════════
+   STATS — grid 4 cols · token Home tiles
+   ════════════════════════════════════════ */
+.cm-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+  border-top: 0.8px solid var(--border);
+  border-bottom: 0.8px solid var(--border);
+  margin-bottom: 0;
+}
+
+.cm-stat {
+  background-color: var(--bg-primary);
+  padding: 36px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   0.5s var(--delay, 0s) ease,
+    transform 0.5s var(--delay, 0s) ease,
+    background-color 0.25s ease;
+}
+
+.cm-stat.is-visible { opacity: 1; transform: translateY(0); }
+.cm-stat:hover { background-color: var(--bg-surface-hover); }
+
+.cm-stat__value {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 2.6vw, 42px);
+  font-weight: 700;
+  color: #ffa205;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.cm-stat__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 16.5px;
+}
+
+/* ════════════════════════════════════════
+   APERTURA — "Här började allt."
+   Frase full-width de máximo impacto editorial
+   ════════════════════════════════════════ */
+.cm-opening {
+  padding: 72px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  border-bottom: 0.8px solid var(--border);
+}
+
+.cm-opening__text {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 96px);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  /* Fade animado */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cmFadeUp 1s 0.3s both;
+}
+
+/* Regla decorativa debajo */
+.cm-opening__rule {
+  width: 100%;
+  height: 0.8px;
+  background: linear-gradient(
+    to right,
+    #ffa205 0%,
+    rgba(255, 162, 5, 0.3) 30%,
+    transparent 70%
+  );
+}
+
+/* ════════════════════════════════════════
+   BODY — 2 columnas asimétricas
+   55% texto · 45% imagen+enlace
+   ════════════════════════════════════════ */
+.cm-body {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 80px;
+  padding: 72px 72px 80px;
+  align-items: start;
+}
+
+/* ════════════════════════════════════════
+   ARTÍCULO — columna texto
+   ════════════════════════════════════════ */
+.cm-article {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s 0.1s ease, transform 0.65s 0.1s ease;
+}
+
+.cm-article.is-visible { opacity: 1; transform: translateY(0); }
+
+.cm-article__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cm-article__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: rgba(255, 162, 5, 0.65);
+  margin: 0;
+  line-height: 16.5px;
+}
+
+/* Figma Heading 2 adaptado al sistema oscuro */
+.cm-article__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 2.6vw, 40px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cm-article__divider {
+  width: 36px;
+  height: 1.5px;
+  background: rgba(255, 162, 5, 0.55);
+}
+
+/* Párrafos — Figma: Inter Medium 14px · lh 21px */
+.cm-article__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cm-article__para {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Cita destacada — borde naranja izquierdo */
+.cm-article__blockquote {
+  border-left: 2px solid #ffa205;
+  padding: 14px 20px;
+  background: rgba(255, 162, 5, 0.04);
+  margin: 0;
+}
+
+.cm-article__blockquote p {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Párrafo de cierre */
+.cm-article__closing {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+  padding-top: 4px;
+}
+
+/* Skills pills */
+.cm-article__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cm-article__skill {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 0.8px solid var(--border);
+  padding: 5px 12px;
+  line-height: 16px;
+  transition: border-color 0.2s, color 0.2s;
+  cursor: default;
+}
+
+.cm-article__skill:hover {
+  border-color: rgba(255, 162, 5, 0.4);
+  color: rgba(255, 162, 5, 0.8);
+}
+
+/* Tag de categoría */
+.cm-article__tag {
+  align-self: flex-start;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 162, 5, 0.52);
+  border: 0.8px solid rgba(255, 162, 5, 0.20);
+  padding: 6px 16px;
+  line-height: 16px;
+}
+
+/* ════════════════════════════════════════
+   VISUAL — columna imagen + enlace
+   sticky para acompañar el scroll del texto
+   ════════════════════════════════════════ */
+.cm-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: sticky;
+  top: 120px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s 0.25s ease, transform 0.7s 0.25s ease;
+}
+
+.cm-visual.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Figura — imagen como protagonista editorial */
+.cm-visual__figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cm-visual__img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* Proporción vertical — el magasin es retrato */
+  aspect-ratio: 3 / 4;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.cm-visual__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.9) saturate(0.85);
+  transition: filter 0.4s ease, transform 0.6s ease;
+}
+
+.cm-visual__img-wrap:hover .cm-visual__img {
+  filter: brightness(1) saturate(1);
+  transform: scale(1.02);
+}
+
+/* Overlay con etiquetas sobre la imagen */
+.cm-visual__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 64px 20px 20px;
+  background: linear-gradient(to top, rgba(17,17,17,0.88) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cm-visual__overlay-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.cm-visual__overlay-year {
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffa205;
+}
+
+/* Caption debajo de la imagen */
+.cm-visual__caption {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  padding: 10px 0 0;
+  line-height: 16px;
+}
+
+/* ── Enlace al PDF — CTA debajo de la imagen ── */
+.cm-visual__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-decoration: none;
+  border: 0.8px solid rgba(255, 162, 5, 0.28);
+  border-top: none;                     /* se une visualmente a la imagen */
+  background: rgba(255, 162, 5, 0.04);
+  transition: background 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.cm-visual__link:hover {
+  background: rgba(255, 162, 5, 0.1);
+  border-color: rgba(255, 162, 5, 0.65);
+}
+
+.cm-visual__link-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 16px;
+  gap: 16px;
+}
+
+.cm-visual__link-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cm-visual__link-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  line-height: 16.5px;
+}
+
+.cm-visual__link-sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  line-height: 15px;
+}
+
+.cm-visual__link-arrow {
+  font-size: 20px;
+  color: #ffa205;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+
+.cm-visual__link:hover .cm-visual__link-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Barra animada de progreso en hover */
+.cm-visual__link-bar {
+  height: 2px;
+  width: 0%;
+  background-color: #ffa205;
+  transition: width 0.3s ease;
+}
+
+.cm-visual__link:hover .cm-visual__link-bar { width: 100%; }
+
+/* ── Contexto numérico — dos datos clave ── */
+.cm-visual__context {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 0.8px solid rgba(255, 255, 255, 0.06);
+  border-top: none;
+  margin-top: 1px;
+}
+
+.cm-visual__context-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 20px;
+}
+
+.cm-visual__context-divider {
+  width: 0.8px;
+  background: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.cm-visual__context-num {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffa205;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.cm-visual__context-desc {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 14px;
+}
+
+/* ════════════════════════════════════════
+   CTA FINAL — token home-contact (2:356)
+   ════════════════════════════════════════ */
+.cm-cta {
+  background-color: var(--bg-secondary);
+  border-top: 0.8px solid var(--border);
+  padding: 80px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.cm-cta__left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cm-cta__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #ffa205;
+  margin: 0;
+  line-height: 16.5px;
+}
+
+.cm-cta__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 50.4px);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cm-cta__title em { font-style: italic; color: #ffa205; }
+
+.cm-cta__btn {
+  flex-shrink: 0;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  background-color: #ffa205;
+  padding: 16px 44px;
+  text-decoration: none;
+  line-height: 18px;
+  transition: background-color 0.25s ease;
+}
+
+.cm-cta__btn:hover { background-color: #ffffff; }
+
+/* ════════════════════════════════════════
+   ANIMACIONES
+   ════════════════════════════════════════ */
+@keyframes cmFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .cm-stats { grid-template-columns: repeat(2, 1fr); }
+  .cm-body  { grid-template-columns: 1fr; gap: 56px; }
+  .cm-visual { position: static; }
+  /* Imagen horizontal en tablet */
+  .cm-visual__img-wrap { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 768px) {
+  .cm-hero    { padding: 60px 5vw 40px; }
+  .cm-opening { padding: 48px 5vw 40px; }
+  .cm-stats   { grid-template-columns: repeat(2, 1fr); }
+  .cm-body    { padding: 48px 5vw 60px; gap: 40px; }
+  .cm-cta     { flex-direction: column; padding: 60px 5vw; align-items: flex-start; }
+  .cm-hero__meta { flex-direction: column; gap: 4px; }
+  .cm-hero__sep  { display: none; }
+}
+
+@media (max-width: 480px) {
+  .cm-stats            { grid-template-columns: 1fr; }
+  .cm-stat             { padding: 24px 5vw; }
+  .cm-opening__text    { font-size: clamp(32px, 10vw, 56px); }
+  .cm-visual__context  { flex-direction: column; gap: 0; }
+  .cm-visual__context-divider { width: 100%; height: 0.8px; }
+  .cm-hero             { padding: 48px 5vw 36px; }
+  .cm-cta              { padding: 48px 5vw; }
+}
+
+@media (max-width: 375px) {
+  .cm-hero__h1         { font-size: clamp(38px, 11vw, 60px); }
+  .cm-stat__value      { font-size: clamp(20px, 5.5vw, 30px); }
+  .cm-article__title   { font-size: clamp(18px, 5.5vw, 26px); }
+  .cm-opening__text    { font-size: clamp(28px, 9vw, 48px); }
+  .cm-body             { padding: 40px 5vw 48px; }
+  .cm-stats            { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,19 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import CrossMediaIsland from "../../../components/CrossMediaIsland";
+import "../../../pagesCSS/CrossMedia.css";
+
+export function getStaticPaths() {
+  const langs = ["sv", "en", "es"];
+  return langs.map(lang => ({ params: { lang, id: "1" } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+const cm = t("crossmedia");
+---
+
+<BaseLayout lang={lang} isHome={false} title={"Cross Media — Nelson Pena"}>
+  <CrossMediaIsland cm={cm} lang={lang} client:load />
+</BaseLayout>

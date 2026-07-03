@@ -1,0 +1,87 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import OakCaseIsland from "../../../components/OakCaseIsland";
+import "../../../pagesCSS/OakCase.css";
+
+export function getStaticPaths() {
+  return getLangPaths();
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const oakData = {
+  back:         t("oakCase", "back"),
+  navTag:       t("oakCase", "navTag"),
+  heroTitle:    t("oakCase", "heroTitle"),
+  heroLead:     t("oakCase", "heroLead"),
+  meta:         t("oakCase", "meta"),
+  screens:      t("oakCase", "screens"),
+  briefItems:   t("oakCase", "briefItems"),
+  processSteps: t("oakCase", "processSteps"),
+  needs:        t("oakCase", "needs"),
+  quotes:       t("oakCase", "quotes"),
+  personas:     t("oakCase", "personas"),
+  designSystem: t("oakCase", "designSystem"),
+  iterations:   t("oakCase", "iterations"),
+  resultStats:  t("oakCase", "resultStats"),
+  a11yPoints:   t("oakCase", "a11yPoints"),
+  back: t("oakCase", "back"),
+  navTag: t("oakCase", "navTag"),
+  heroTitle: t("oakCase", "heroTitle"),
+  heroLead: t("oakCase", "heroLead"),
+  meta: t("oakCase", "meta"),
+  screens: t("oakCase", "screens"),
+  briefItems: t("oakCase", "briefItems"),
+  processSteps: t("oakCase", "processSteps"),
+  needs: t("oakCase", "needs"),
+  quotes: t("oakCase", "quotes"),
+  personas: t("oakCase", "personas"),
+  designSystem: t("oakCase", "designSystem"),
+  iterations: t("oakCase", "iterations"),
+  resultStats: t("oakCase", "resultStats"),
+  a11yPoints: t("oakCase", "a11yPoints"),
+  skills: t("oakCase", "skills"),
+  challengeLabel: t("oakCase", "challengeLabel"),
+  challengeTitle: t("oakCase", "challengeTitle"),
+  challengeP1: t("oakCase", "challengeP1"),
+  challengeP2: t("oakCase", "challengeP2"),
+  briefLabel: t("oakCase", "briefLabel"),
+  processLabel: t("oakCase", "processLabel"),
+  processTitle: t("oakCase", "processTitle"),
+  insightsLabel: t("oakCase", "insightsLabel"),
+  insightsTitle: t("oakCase", "insightsTitle"),
+  insightsIntro: t("oakCase", "insightsIntro"),
+  calloutLabel: t("oakCase", "calloutLabel"),
+  calloutText: t("oakCase", "calloutText"),
+  personasLabel: t("oakCase", "personasLabel"),
+  personasTitle: t("oakCase", "personasTitle"),
+  designLabel: t("oakCase", "designLabel"),
+  designTitle: t("oakCase", "designTitle"),
+  typoName: t("oakCase", "typoName"),
+  typoNote: t("oakCase", "typoNote"),
+  galleryLabel: t("oakCase", "galleryLabel"),
+  prevLabel: t("oakCase", "prevLabel"),
+  nextLabel: t("oakCase", "nextLabel"),
+  dotsLabel: t("oakCase", "dotsLabel"),
+  testLabel: t("oakCase", "testLabel"),
+  testTitle: t("oakCase", "testTitle"),
+  testP: t("oakCase", "testP"),
+  testStrong: t("oakCase", "testStrong"),
+  testP2: t("oakCase", "testP2"),
+  actionLabel: t("oakCase", "actionLabel"),
+  resultLabel: t("oakCase", "resultLabel"),
+  resultTitle: t("oakCase", "resultTitle"),
+  resultP: t("oakCase", "resultP"),
+  a11yLabel: t("oakCase", "a11yLabel"),
+  a11yTitle: t("oakCase", "a11yTitle"),
+  ctaText: t("oakCase", "ctaText"),
+  ctaBtn: t("oakCase", "ctaBtn"),
+};
+---
+
+<BaseLayout lang={lang} isHome={false} title={"OAK 3D Gymplanerare — Nelson Pena"}>
+  <OakCaseIsland oakData={oakData} lang={lang} client:load />
+</BaseLayout>
+

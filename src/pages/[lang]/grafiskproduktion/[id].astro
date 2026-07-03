@@ -1,0 +1,23 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import GrafiskProduktionIsland from "../../../components/GrafiskProduktionIsland";
+import "../../../pagesCSS/CrossMedia.css";
+
+export function getStaticPaths() {
+  return ["sv", "en", "es"].map(lang => ({ params: { lang, id: "1" } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const gp = {
+  title:       t("grafiskProduktion", "title"),
+  back:        t("grafiskProduktion", "back"),
+  experiences: t("grafiskProduktion", "experiences"),
+};
+---
+
+<BaseLayout lang={lang} isHome={false} title={"Grafisk Produktion — Nelson Pena"}>
+  <GrafiskProduktionIsland gp={gp} lang={lang} client:load />
+</BaseLayout>

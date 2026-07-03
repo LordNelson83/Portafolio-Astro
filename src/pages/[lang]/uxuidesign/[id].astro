@@ -1,0 +1,18 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import UxUiDesignIsland from "../../../components/UxUiDesignIsland";
+import "../../../pagesCSS/UxUiDesign.css";
+
+export function getStaticPaths() {
+  return ["sv", "en", "es"].map(lang => ({ params: { lang, id: "1" } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+const ux = t("uxui");
+---
+
+<BaseLayout lang={lang} isHome={false} title={"UX/UI Design — Nelson Pena"}>
+  <UxUiDesignIsland ux={ux} lang={lang} client:load />
+</BaseLayout>

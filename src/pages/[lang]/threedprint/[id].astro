@@ -1,0 +1,20 @@
+﻿---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import ThreeDPrintIsland from "../../../components/ThreeDPrintIsland";
+import "../../../pagesCSS/ThreeDPrint.css";
+
+export function getStaticPaths() {
+  const langs = ["sv", "en", "es"];
+  return langs.map(lang => ({ params: { lang, id: "1" } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+const td = t("threedprint");
+---
+
+<BaseLayout lang={lang} isHome={false} title={"3D Print — Nelson Pena"}>
+  <ThreeDPrintIsland td={td} lang={lang} client:load />
+</BaseLayout>
+
