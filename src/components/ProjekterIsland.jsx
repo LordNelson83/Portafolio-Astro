@@ -41,8 +41,8 @@ export default function ProjekterIsland({ pk, lang }) {
   const oak        = pk.oak        || {};
 
   useEffect(() => {
-    // rootMargin negativo activa la animaciÃ³n antes de que la secciÃ³n llegue
-    // al borde inferior de la pantalla, asÃ­ un scroll rÃ¡pido no la deja a
+    // rootMargin negativo activa la animación antes de que la sección llegue
+    // al borde inferior de la pantalla, así un scroll rápido no la deja a
     // medio camino con opacity: 0 (efecto "pantalla en negro").
     const obs = new IntersectionObserver(
       (e) => e.forEach(en => en.isIntersecting && en.target.classList.add("is-visible")),
@@ -95,17 +95,17 @@ export default function ProjekterIsland({ pk, lang }) {
         {/* 01 AHR-Motor */}
         <section className="pk-project pk-project--ahr" ref={ahrRef}
           style={{ "--accent": AHR_ACCENT }}
-          aria-label="Projekt 01 â€” ByrÃ¥analys, Fortnox och Chas Academy">
+          aria-label="Projekt 01 — Byråanalys, Fortnox och Chas Academy">
 
           <div className="pk-project__header">
             <span className="pk-project__num" aria-hidden="true">01</span>
             <div className="pk-project__meta">
               <p className="pk-project__school">Fortnox · Chas Academy</p>
-              <h2 className="pk-project__title">ByrÃ¥analys</h2>
+              <h2 className="pk-project__title">Byråanalys</h2>
               <div className="pk-project__row">
-                <span className="pk-project__period">2025â€“2026</span>
+                <span className="pk-project__period">2025–2026</span>
                 <span className="pk-project__tag pk-project__tag--wip">
-                  <span aria-hidden="true">âš™</span> {pk.ahrWip}
+                  {pk.ahrWip}
                 </span>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function ProjekterIsland({ pk, lang }) {
             <section key={id} className="pk-project"
               ref={el => projRefs.current[pi] = el}
               style={{ "--accent": color }}
-              aria-label={`Projekt ${num} â€” ${proj.title}`}>
+              aria-label={`Projekt ${num} — ${proj.title}`}>
 
               <div className="pk-project__header">
                 <span className="pk-project__num" aria-hidden="true">{num}</span>
@@ -314,7 +314,7 @@ export default function ProjekterIsland({ pk, lang }) {
                         {proj.results.map(r => (
                           <div key={r.score} className="pk-result" role="listitem">
                             <span className="pk-result__score" aria-hidden="true">{r.score}</span>
-                            <span className="pk-result__text">{r.score} â€” {r.text}</span>
+                            <span className="pk-result__text">{r.score} — {r.text}</span>
                           </div>
                         ))}
                       </div>

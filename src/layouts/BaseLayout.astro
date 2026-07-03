@@ -4,7 +4,7 @@ import "../styles/App.css";
 import "../styles/index.css";
 import "../components/Navbar.css";
 
-const { lang = "sv", isHome = false, title = "Nelson Pena", description = "Product Designer med erfarenhet av Continuous Discovery, UX Research och Figma. Examensarbete pa Fortnox AB — Byraanalys." } = Astro.props;
+const { lang = "sv", isHome = false, title = "Nelson Peña", description = "Product Designer med erfarenhet av Continuous Discovery, UX Research och Figma. Examensarbete på Fortnox AB — Byråanalys." } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -16,14 +16,14 @@ const currentPath = Astro.url.pathname;
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <meta property="og:title" content="Nelson Pena — Product Designer" />
+    <meta property="og:title" content="Nelson Peña — Product Designer" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://nelsonpenna.netlify.app" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://nelsonpenna.netlify.app/og-image.png" />
     <meta property="og:locale" content={lang === "sv" ? "sv_SE" : lang === "en" ? "en_GB" : "es_ES"} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Nelson Pena — Product Designer" />
+    <meta name="twitter:title" content="Nelson Peña — Product Designer" />
     <meta name="twitter:image" content="https://nelsonpenna.netlify.app/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

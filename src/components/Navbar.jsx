@@ -59,11 +59,11 @@ const Navbar = ({ lang = "sv", currentPath = "/", isHome = false }) => {
       className={"navbar " + (isHome ? "navbar--dark" : "navbar--light")}
       aria-label="Huvudnavigation"
     >
-      <a href={"/" + lang + "/"} className="navbar-logo" aria-label="Hem - Nelson Pena">
+      <a href={"/" + lang + "/"} className="navbar-logo" aria-label="Hem - Nelson Peña">
         <img
           className="navbar-logo-img"
           src="/images/npt.webp"
-          alt="Nelson Pena logotyp"
+          alt="Nelson Peña logotyp"
           style={{ filter: "brightness(0) invert(1)" }}
         />
       </a>

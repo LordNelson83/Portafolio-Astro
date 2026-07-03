@@ -10,8 +10,8 @@ export default function OakCaseIsland({ oakData, lang }) {
   const [isPaused, setIsPaused]         = useState(false);
 
   useEffect(() => {
-    // rootMargin negativo activa la animaciÃ³n antes de que la secciÃ³n llegue
-    // al borde inferior de la pantalla, asÃ­ un scroll rÃ¡pido no la deja a
+    // rootMargin negativo activa la animación antes de que la sección llegue
+    // al borde inferior de la pantalla, así un scroll rápido no la deja a
     // medio camino con opacity: 0 (efecto "pantalla en negro").
     const obs = new IntersectionObserver(
       (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add("oc-visible")),
@@ -139,7 +139,7 @@ export default function OakCaseIsland({ oakData, lang }) {
               <p className="oc-quote__type">{q.type}</p>
               <p className="oc-quote__text">"{q.quote}"</p>
               <footer className="oc-quote__footer">
-                <span className="oc-quote__persona">â€” {q.persona}</span>
+                <span className="oc-quote__persona">— {q.persona}</span>
               </footer>
             </blockquote>
           ))}
@@ -218,14 +218,14 @@ export default function OakCaseIsland({ oakData, lang }) {
               onClick={() => setActiveScreen(i => (i - 1 + IMGS.length) % IMGS.length)}
               aria-label={oakData.prevLabel}
             >
-              <span aria-hidden="true">â€¹</span>
+              <span aria-hidden="true">‹</span>
             </button>
             <button
               className="oc-gallery__nav oc-gallery__nav--next"
               onClick={() => setActiveScreen(i => (i + 1) % IMGS.length)}
               aria-label={oakData.nextLabel}
             >
-              <span aria-hidden="true">â€º</span>
+              <span aria-hidden="true">›</span>
             </button>
           </div>
           <div className="oc-gallery__dots" role="tablist" aria-label={oakData.dotsLabel}>
