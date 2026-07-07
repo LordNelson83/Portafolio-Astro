@@ -43,7 +43,7 @@
 .om-cert__body { display: flex; flex-direction: column; gap: 2px; flex: 1; }
 .om-cert__title { font-family: "Montserrat", sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #ffa205; margin: 0; }
 .om-cert__label { font-family: "Montserrat", sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.82); margin: 0; }
-.om-cert__date { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.38); margin: 0; }
+.om-cert__date { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.50); margin: 0; }
 .om-cert__cta { font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 500; color: rgba(255,162,5,0.6); white-space: nowrap; flex-shrink: 0; transition: color 0.2s ease; }
 .om-cert:hover .om-cert__cta { color: #ffa205; }
 
