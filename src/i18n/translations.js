@@ -92,7 +92,7 @@ export const translations = {
       artTitle:     "Grafisk form & Kommunikation",
       paragraphs: [
         "Det var på Fridhems folkhögskola som jag för första gången förstod vad design verkligen är – inte bara estetik, utan ett sätt att kommunicera, beröra och förändra hur människor upplever världen.",
-        "Under två år fördjupade jag mig i grafiskt hantverk från grunden: klassisk teckning, typografi, layout, illustration och visuell berättarteknik. Parallellt byggde jag tekniska kunskaper i Adobe Photoshop, Illustrator och InDesign – verktyg som blev en naturlig förlängning av mitt kreativa tänkande.",
+        "Under två år fördjupade jag mig i grafiskt hantverk från grunden: klassisk teckning, typografi, layout och visuell berättarteknik. Parallellt byggde jag tekniska kunskaper i Adobe Photoshop och InDesign – verktyg som blev en naturlig förlängning av mitt kreativa tänkande.",
         "Det som formade mig mest var inte programmen. Det var läran om att se – att analysera, ifrågasätta och kommunicera med bild och form på ett medvetet sätt. Samarbetet med andra kulturlinjer vidgade perspektivet och lärde mig att god design alltid föds i mötet mellan olika röster.",
       ],
       quote:        "Det var läran om att se – att analysera, ifrågasätta och kommunicera med bild och form på ett medvetet sätt.",
@@ -607,7 +607,7 @@ export const translations = {
       artTitle:   "Graphic Design & Communication",
       paragraphs: [
         "It was at Fridhems folkhögskola that I first truly understood what design really is — not just aesthetics, but a way to communicate, move people and change how they experience the world.",
-        "Over two years I immersed myself in graphic craft from the ground up: classical drawing, typography, layout, illustration and visual storytelling. At the same time I built technical skills in Adobe Photoshop, Illustrator and InDesign — tools that became a natural extension of my creative thinking.",
+        "Over two years I immersed myself in graphic craft from the ground up: classical drawing, typography, layout and visual storytelling. At the same time I built technical skills in Adobe Photoshop and InDesign — tools that became a natural extension of my creative thinking.",
         "What shaped me most was not the software. It was learning to see — to analyse, question and communicate consciously through image and form. Collaborating with students from other creative programmes broadened my perspective and taught me that great design is always born at the meeting of different voices.",
       ],
       quote:      "It was learning to see — to analyse, question and communicate consciously through image and form.",
@@ -1117,7 +1117,7 @@ export const translations = {
       artTitle:   "Diseño Gráfico & Comunicación",
       paragraphs: [
         "Fue en Fridhems folkhögskola donde por primera vez entendí de verdad qué es el diseño — no solo estética, sino una forma de comunicar, emocionar y cambiar cómo las personas experimentan el mundo.",
-        "Durante dos años me sumergí en el oficio gráfico desde los fundamentos: dibujo clásico, tipografía, maquetación, ilustración y narrativa visual. Al mismo tiempo construí competencias técnicas en Adobe Photoshop, Illustrator e InDesign — herramientas que se convirtieron en extensiones naturales de mi pensamiento creativo.",
+        "Durante dos años me sumergí en el oficio gráfico desde los fundamentos: dibujo clásico, tipografía, maquetación y narrativa visual. Al mismo tiempo construí competencias técnicas en Adobe Photoshop e InDesign — herramientas que se convirtieron en extensiones naturales de mi pensamiento creativo.",
         "Lo que más me formó no fueron los programas. Fue el aprendizaje de ver — analizar, cuestionar y comunicar conscientemente a través de la imagen y la forma. La colaboración con otras líneas artísticas amplió mi perspectiva y me enseñó que el buen diseño siempre nace en el encuentro de voces diferentes.",
       ],
       quote:      "Fue el aprendizaje de ver — analizar, cuestionar y comunicar conscientemente a través de la imagen y la forma.",
