@@ -33,10 +33,10 @@ export default function OakCaseIsland({ oakData, lang }) {
   }, []);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || lightboxOpen) return;
     const timer = setInterval(() => setActiveScreen(i => (i + 1) % IMGS.length), 3800);
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [isPaused, lightboxOpen]);
 
   const addRef = (el, i) => { sectRefs.current[i] = el; };
 
@@ -60,7 +60,7 @@ export default function OakCaseIsland({ oakData, lang }) {
       {/* â”€â”€ NAV â”€â”€ */}
       <nav className="oc-nav" aria-label="Sidnavigation">
         <a href={"/" + lang + "/grafiskproduktion"} className="oc-back">
-          <span className="oc-back__arrow" aria-hidden="true">←</span>
+          <span className="oc-back__arrow" aria-hidden="true">←</span>
           <span>{oakData.back}</span>
         </a>
         <span className="oc-nav__tag">{oakData.navTag}</span>
