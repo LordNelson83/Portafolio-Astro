@@ -28,14 +28,14 @@ const TILES = [
 ---
 
 <BaseLayout lang={lang} isHome={true} title={t("home", "title") + " — Nelson Peña"}>
-  <main id="main-content" class="home-page">
+  <div class="home-page">
 
     <section class="home-hero" id="hero-section" aria-label="Hero - Nelson Peña">
       <img class="hero-photo" src="/images/me.webp" alt="Nelson Peña, Product and UX/UI Designer" />
       <div class="hero-overlay" aria-hidden="true" />
       <div class="hero-grain"   aria-hidden="true" />
       <span class="hero-index" aria-hidden="true">2026</span>
-      <p class="hero-role" aria-hidden="true">Product and UX/UI Designer</p>
+      <p class="hero-role">Product and UX/UI Designer</p>
       <div class="hero-content">
         <h1 class="hero-name">
           <span class="hero-name__first">Nelson&nbsp;</span>
@@ -99,7 +99,7 @@ const TILES = [
       </a>
     </section>
 
-  </main>
+  </div>
 </BaseLayout>
 
 <script>

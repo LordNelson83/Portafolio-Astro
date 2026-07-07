@@ -35,21 +35,47 @@ const AI_SKILLS = [
 ];
 
 function DiplomModal({ onClose }) {
+  const closeBtnRef = useRef(null);
+  const modalRef = useRef(null);
+  const triggerRef = useRef(document.activeElement);
+
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    closeBtnRef.current?.focus();
+
+    const onKey = (e) => {
+      if (e.key === "Escape") { onClose(); return; }
+      if (e.key !== "Tab" || !modalRef.current) return;
+
+      const focusable = modalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      triggerRef.current?.focus();
     };
   }, [onClose]);
 
   return (
     <div className="om-diplom-backdrop" onClick={onClose}
       role="dialog" aria-modal="true" aria-label="Diplom">
-      <div className="om-diplom-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="om-diplom-close" onClick={onClose} aria-label="Stang diplom">x</button>
+      <div className="om-diplom-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+        <button ref={closeBtnRef} className="om-diplom-close" onClick={onClose} aria-label="Stang diplom">x</button>
         <div className="om-diplom-viewer">
           <iframe src={DIPLOM_PDF + "#toolbar=0&navpanes=0"}
             title="Diplom - Digital tillganglighet"

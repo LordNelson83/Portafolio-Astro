@@ -32,9 +32,12 @@ const currentPath = Astro.url.pathname;
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">{lang === "sv" ? "Hoppa till huvudinnehåll" : lang === "en" ? "Skip to main content" : "Saltar al contenido principal"}</a>
     <div class={"app-shell " + (isHome ? "app-shell--dark" : "app-shell--light")}>
       <Navbar lang={lang} currentPath={currentPath} isHome={isHome} client:load />
-      <slot />
+      <main id="main-content">
+        <slot />
+      </main>
     </div>
   </body>
 </html>
