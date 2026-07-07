@@ -1,6 +1,7 @@
 ﻿---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getLangPaths, useTranslations } from "../../../i18n/utils";
+import ImageGridIsland from "../../../components/ImageGridIsland";
 import "../../../pagesCSS/AhrMotorCase.css";
 
 export function getStaticPaths() {
@@ -146,14 +147,15 @@ const IMGS = [
           ))}
         </div>
       </div>
-      <div class="cs-images">
-        {IMGS.map((img) => (
-          <div class="cs-image-wrap">
-            <img src={img.src} alt={img.alt} class="cs-image" loading="lazy" />
-            <p class="cs-image__caption">{img.caption}</p>
-          </div>
-        ))}
-      </div>
+      <ImageGridIsland
+        images={IMGS}
+        lang={lang}
+        gridClass="cs-images"
+        wrapClass="cs-image-wrap"
+        imgClass="cs-image"
+        captionClass="cs-image__caption"
+        client:load
+      />
     </section>
 
     <section class="cs-section cs-visible">

@@ -1,4 +1,11 @@
 ﻿import { useEffect, useRef, useState } from "react";
+import Lightbox from "./Lightbox";
+
+const LB_LABELS = {
+  sv: { close: "Stang", prev: "Foregaende bild", next: "Nasta bild", view: "Visa bild i storre format" },
+  en: { close: "Close", prev: "Previous image", next: "Next image", view: "View enlarged image" },
+  es: { close: "Cerrar", prev: "Imagen anterior", next: "Imagen siguiente", view: "Ver imagen ampliada" },
+};
 
 
 const IMGS = ["/images/oak_1.webp", "/images/oak_2.webp", "/images/oak_3.webp", "/images/oak_4.webp", "/images/oak_5.webp"];
@@ -7,6 +14,8 @@ export default function OakCaseIsland({ oakData, lang }) {
   const heroRef  = useRef(null);
   const sectRefs = useRef([]);
   const [activeScreen, setActiveScreen] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const lbLabels = LB_LABELS[lang] || LB_LABELS.sv;
   const [isPaused, setIsPaused]         = useState(false);
 
   useEffect(() => {
@@ -51,7 +60,7 @@ export default function OakCaseIsland({ oakData, lang }) {
       {/* â”€â”€ NAV â”€â”€ */}
       <nav className="oc-nav" aria-label="Sidnavigation">
         <a href={"/" + lang + "/grafiskproduktion"} className="oc-back">
-          <span className="oc-back__arrow" aria-hidden="true">â†</span>
+          <span className="oc-back__arrow" aria-hidden="true">←</span>
           <span>{oakData.back}</span>
         </a>
         <span className="oc-nav__tag">{oakData.navTag}</span>
@@ -206,7 +215,9 @@ export default function OakCaseIsland({ oakData, lang }) {
                 className={`oc-gallery__slide${i === activeScreen ? " oc-gallery__slide--active" : ""}`}
                 aria-hidden={i !== activeScreen}
               >
-                <img src={img} alt={screens[i]?.alt ?? ""} className="oc-gallery__img" loading="lazy" />
+                <button type="button" className="pk-gallery__img-btn" tabIndex={i === activeScreen ? 0 : -1} onClick={() => setLightboxOpen(true)} aria-label={lbLabels.view}>
+                  <img src={img} alt={screens[i]?.alt ?? ""} className="oc-gallery__img" loading="lazy" />
+                </button>
                 <p className="oc-gallery__caption" aria-hidden="true">{screens[i]?.label ?? ""}</p>
               </div>
             ))}
@@ -307,6 +318,17 @@ export default function OakCaseIsland({ oakData, lang }) {
         <p className="oc-cta__text">{oakData.ctaText}</p>
         <a href={"/" + lang + "/kontakta"} className="oc-cta__btn">{oakData.ctaBtn}</a>
       </footer>
+
+      {lightboxOpen && (
+        <Lightbox
+          images={IMGS.map((src, i) => ({ src, alt: screens[i]?.alt || "" }))}
+          index={activeScreen}
+          onClose={() => setLightboxOpen(false)}
+          onPrev={() => setActiveScreen(i => (i - 1 + IMGS.length) % IMGS.length)}
+          onNext={() => setActiveScreen(i => (i + 1) % IMGS.length)}
+          prevLabel={lbLabels.prev} nextLabel={lbLabels.next} closeLabel={lbLabels.close}
+        />
+      )}
 
     </div>
   );

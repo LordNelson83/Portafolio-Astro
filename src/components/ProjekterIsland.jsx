@@ -1,4 +1,11 @@
 ﻿import { useEffect, useRef, useState } from "react";
+import Lightbox from "./Lightbox";
+
+const LB_LABELS = {
+  sv: { close: "Stang", prev: "Foregaende bild", next: "Nasta bild", view: "Visa bild i storre format" },
+  en: { close: "Close", prev: "Previous image", next: "Next image", view: "View enlarged image" },
+  es: { close: "Cerrar", prev: "Imagen anterior", next: "Imagen siguiente", view: "Ver imagen ampliada" },
+};
 
 
 
@@ -7,7 +14,7 @@ const AHR_IMGS = ["/images/ahr_1.webp", "/images/ahr_2.webp", "/images/ahr_3.web
 const OAK_IMGS = ["/images/oak_1.webp", "/images/oak_2.webp", "/images/oak_3.webp", "/images/oak_4.webp", "/images/oak_5.webp"];
 
 const PROJECT_IMAGES  = ["/images/oak.webp", "/images/solenia.webp", "/images/magasin.webp"];
-const PROJECT_COLORS  = ["#90a590", "#ffa205", "#ffa205"];
+const PROJECT_COLORS  = ["#90a590", "#ffa205", "#00a6b4"];
 const PROJECT_IDS     = ["oak", "ehandel", "magasin"];
 const PROJECT_LINKS   = [
   [{ url: "/OAK-UX.pdf", external: false }, { url: "/OAK-UI.pdf", external: false }, { url: "/projekter/oak-case", external: false, internal: true }],
@@ -31,6 +38,8 @@ export default function ProjekterIsland({ pk, lang }) {
 
   const [activeScreen,    setActiveScreen]    = useState(0);
   const [activeAhrScreen, setActiveAhrScreen] = useState(0);
+  const [lightboxGallery, setLightboxGallery] = useState(null);
+  const lbLabels = LB_LABELS[lang] || LB_LABELS.sv;
   const [isPaused,        setIsPaused]        = useState(false);
   const [isAhrPaused,     setIsAhrPaused]     = useState(false);
 
@@ -124,7 +133,9 @@ export default function ProjekterIsland({ pk, lang }) {
                   <div key={i}
                     className={`pk-gallery__slide${i === activeAhrScreen ? " pk-gallery__slide--active" : ""}`}
                     aria-hidden={i !== activeAhrScreen}>
-                    <img src={src} alt={ahrScreens[i]?.alt || ""} className="pk-gallery__img" />
+                    <button type="button" className="pk-gallery__img-btn" tabIndex={i === activeAhrScreen ? 0 : -1} onClick={() => setLightboxGallery("ahr")} aria-label={lbLabels.view}>
+                      <img src={src} alt={ahrScreens[i]?.alt || ""} className="pk-gallery__img" />
+                    </button>
                     <div className="pk-gallery__caption" aria-hidden="true">{ahrScreens[i]?.label}</div>
                   </div>
                 ))}
@@ -185,7 +196,7 @@ export default function ProjekterIsland({ pk, lang }) {
                 <a href="https://www.fortnox.se" target="_blank" rel="noopener noreferrer"
                   className="pk-link" aria-label="Fortnox">
                   <span className="pk-link__label">Fortnox</span>
-                  <span className="pk-link__icon" aria-hidden="true">â†—</span>
+                  <span className="pk-link__icon" aria-hidden="true">↗</span>
                   <div className="pk-link__bar" aria-hidden="true" />
                 </a>
                   <a href={"/" + lang + "/projekter/byraanalys"} className="pk-link">
@@ -238,7 +249,9 @@ export default function ProjekterIsland({ pk, lang }) {
                         <div key={i}
                           className={`pk-gallery__slide${i === activeScreen ? " pk-gallery__slide--active" : ""}`}
                           aria-hidden={i !== activeScreen}>
-                          <img src={src} alt={oakScreens[i]?.alt || ""} className="pk-gallery__img" />
+                          <button type="button" className="pk-gallery__img-btn" tabIndex={i === activeScreen ? 0 : -1} onClick={() => setLightboxGallery("oak")} aria-label={lbLabels.view}>
+                            <img src={src} alt={oakScreens[i]?.alt || ""} className="pk-gallery__img" />
+                          </button>
                           <div className="pk-gallery__caption" aria-hidden="true">{oakScreens[i]?.label}</div>
                         </div>
                       ))}
@@ -340,7 +353,7 @@ export default function ProjekterIsland({ pk, lang }) {
                         const lnkData = links[li];
                         if (lnkData?.internal) {
                           return (
-                            <a key={li} href={"/" + lang + "/" + (lnkData?.url || "")} className="pk-link" aria-label={lnk.label}>
+                            <a key={li} href={"/" + lang + "/" + (lnkData?.url || "").replace(/^\//, "")} className="pk-link" aria-label={lnk.label}>
                               <span className="pk-link__label">{lnk.label}</span>
                               <span className="pk-link__icon" aria-hidden="true">{lnk.icon}</span>
                               <div className="pk-link__bar" aria-hidden="true" />
@@ -375,6 +388,27 @@ export default function ProjekterIsland({ pk, lang }) {
         </div>
         <a href={"/" + lang + "/kontakta"} className="pk-cta__btn">{pk.ctaBtn}</a>
       </footer>
+
+      {lightboxGallery === "ahr" && (
+        <Lightbox
+          images={AHR_IMGS.map((src, i) => ({ src, alt: ahrScreens[i]?.alt || "" }))}
+          index={activeAhrScreen}
+          onClose={() => setLightboxGallery(null)}
+          onPrev={() => setActiveAhrScreen(i => (i - 1 + AHR_IMGS.length) % AHR_IMGS.length)}
+          onNext={() => setActiveAhrScreen(i => (i + 1) % AHR_IMGS.length)}
+          prevLabel={lbLabels.prev} nextLabel={lbLabels.next} closeLabel={lbLabels.close}
+        />
+      )}
+      {lightboxGallery === "oak" && (
+        <Lightbox
+          images={OAK_IMGS.map((src, i) => ({ src, alt: oakScreens[i]?.alt || "" }))}
+          index={activeScreen}
+          onClose={() => setLightboxGallery(null)}
+          onPrev={() => setActiveScreen(i => (i - 1 + OAK_IMGS.length) % OAK_IMGS.length)}
+          onNext={() => setActiveScreen(i => (i + 1) % OAK_IMGS.length)}
+          prevLabel={lbLabels.prev} nextLabel={lbLabels.next} closeLabel={lbLabels.close}
+        />
+      )}
 
     </main>
   );
