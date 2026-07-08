@@ -207,6 +207,8 @@ export default function OakCaseIsland({ oakData, lang }) {
           aria-label={oakData.galleryLabel}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false); }}
         >
           <div className="oc-gallery__main" aria-live="polite" aria-atomic="true">
             {IMGS.map((img, i) => (
