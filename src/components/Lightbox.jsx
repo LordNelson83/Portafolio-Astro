@@ -1,4 +1,5 @@
 ﻿import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 export default function Lightbox({ images, index, onClose, onPrev, onNext, prevLabel, nextLabel, closeLabel }) {
   const closeBtnRef = useRef(null);
@@ -41,7 +42,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext, prevL
 
   const current = images[index];
 
-  return (
+  return createPortal(
     <div className="lightbox-backdrop" onClick={onClose}
       role="dialog" aria-modal="true" aria-label={current?.alt || ""}>
       <div className="lightbox-modal" onClick={(e) => e.stopPropagation()} ref={modalRef}>
@@ -55,6 +56,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext, prevL
         </button>
         <p className="lightbox-caption" aria-live="polite">{current?.alt || ""}</p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
