@@ -89,7 +89,7 @@ const Navbar = ({ lang = "sv", currentPath = "/", isHome = false }) => {
           aria-label={"Valj sprak, nuvarande: " + currentLang.label}
           aria-expanded={langOpen}
           aria-haspopup="listbox"
-          onKeyDown={e => e.key === "Enter" && setLangOpen(o => !o)}
+          onKeyDown={e => { if (e.target !== e.currentTarget) return; if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLangOpen(o => !o); } if (e.key === "Escape") setLangOpen(false); }}
         >
           <span className="lang-current" aria-hidden="true">
             <CurrentFlag />
@@ -126,7 +126,7 @@ const Navbar = ({ lang = "sv", currentPath = "/", isHome = false }) => {
         aria-label={"Valj sprak, nuvarande: " + currentLang.label}
         aria-expanded={langOpen}
         aria-haspopup="listbox"
-        onKeyDown={e => e.key === "Enter" && setLangOpen(o => !o)}
+        onKeyDown={e => { if (e.target !== e.currentTarget) return; if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLangOpen(o => !o); } if (e.key === "Escape") setLangOpen(false); }}
       >
         <span className="lang-current" aria-hidden="true">
           <CurrentFlag />
