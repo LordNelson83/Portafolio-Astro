@@ -127,7 +127,9 @@ export default function ProjekterIsland({ pk, lang }) {
 
             <div className="pk-gallery" aria-label={pk.galleryAhr}
               onMouseEnter={() => setIsAhrPaused(true)}
-              onMouseLeave={() => setIsAhrPaused(false)}>
+              onMouseLeave={() => setIsAhrPaused(false)}
+              onFocus={() => setIsAhrPaused(true)}
+              onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsAhrPaused(false); }}>
               <div className="pk-gallery__main" aria-live="polite" aria-atomic="true">
                 {AHR_IMGS.map((src, i) => (
                   <div key={i}
@@ -149,13 +151,13 @@ export default function ProjekterIsland({ pk, lang }) {
                   onClick={() => setActiveAhrScreen(i => (i + 1) % AHR_IMGS.length)}
                   aria-label={pk.galleryNext}><span aria-hidden="true">›</span></button>
               </div>
-              <div className="pk-gallery__dots" role="tablist" aria-label={pk.gallerySelect}>
+              <div className="pk-gallery__dots" aria-label={pk.gallerySelect}>
                 {AHR_IMGS.map((_, i) => (
-                  <button key={i} role="tab"
+                  <button key={i} type="button"
                     className={`pk-gallery__dot${i === activeAhrScreen ? " pk-gallery__dot--active" : ""}`}
                     onClick={() => setActiveAhrScreen(i)}
                     aria-label={`${i + 1}: ${ahrScreens[i]?.alt || ""}`}
-                    aria-selected={i === activeAhrScreen} />
+                    aria-current={i === activeAhrScreen ? "true" : undefined} />
                 ))}
               </div>
             </div>
@@ -243,7 +245,9 @@ export default function ProjekterIsland({ pk, lang }) {
                 {id === "oak" ? (
                   <div className="pk-gallery" aria-label={pk.galleryOak}
                     onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}>
+                    onMouseLeave={() => setIsPaused(false)}
+                    onFocus={() => setIsPaused(true)}
+                    onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false); }}>
                     <div className="pk-gallery__main" aria-live="polite" aria-atomic="true">
                       {OAK_IMGS.map((src, i) => (
                         <div key={i}
@@ -265,13 +269,13 @@ export default function ProjekterIsland({ pk, lang }) {
                         onClick={() => setActiveScreen(i => (i + 1) % OAK_IMGS.length)}
                         aria-label={pk.galleryNext}><span aria-hidden="true">›</span></button>
                     </div>
-                    <div className="pk-gallery__dots" role="tablist" aria-label={pk.gallerySelect}>
+                    <div className="pk-gallery__dots" aria-label={pk.gallerySelect}>
                       {OAK_IMGS.map((_, i) => (
-                        <button key={i} role="tab"
+                        <button key={i} type="button"
                           className={`pk-gallery__dot${i === activeScreen ? " pk-gallery__dot--active" : ""}`}
                           onClick={() => setActiveScreen(i)}
                           aria-label={`${i + 1}: ${oakScreens[i]?.alt || ""}`}
-                          aria-selected={i === activeScreen} />
+                          aria-current={i === activeScreen ? "true" : undefined} />
                       ))}
                     </div>
                   </div>
