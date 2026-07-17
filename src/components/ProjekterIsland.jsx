@@ -11,13 +11,13 @@ const LB_LABELS = {
 
 
 const AHR_IMGS = ["/images/ahr_1.webp", "/images/ahr_2.webp", "/images/ahr_3.webp"];
-const OAK_IMGS = ["/images/oak_1.webp", "/images/oak_2.webp", "/images/oak_3.webp", "/images/oak_4.webp", "/images/oak_5.webp"];
+const OAK_IMGS = ["/images/oak_1.webp", "/images/oak_2.webp", "/images/oak_3.webp", "/images/oak_4.webp", "/images/oak_5.webp", "/images/oak_6.webp"];
 
 const PROJECT_IMAGES  = ["/images/oak.webp", "/images/solenia.webp", "/images/magasin.webp"];
 const PROJECT_COLORS  = ["#90a590", "#ffa205", "#00a6b4"];
 const PROJECT_IDS     = ["oak", "ehandel", "magasin"];
 const PROJECT_LINKS   = [
-  [{ url: "/OAK-UX.pdf", external: false }, { url: "/OAK-UI.pdf", external: false }, { url: "/projekter/oak-case", external: false, internal: true }],
+  [{ url: "/OAK-UX.pdf", external: false }, { url: "/OAK-UI.pdf", external: false }, { url: "/projekter/oak-case", external: false, internal: true }, { url: "/uxuidesign/1", external: false, internal: true }],
   [{ url: "https://solenia.netlify.app/", external: true }, { url: "https://github.com/LordNelson83/Nelson_Portfolio", external: true }],
   [{ url: "/Magasin.pdf", external: false }],
 ];

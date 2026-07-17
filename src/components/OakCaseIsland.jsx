@@ -8,7 +8,7 @@ const LB_LABELS = {
 };
 
 
-const IMGS = ["/images/oak_1.webp", "/images/oak_2.webp", "/images/oak_3.webp", "/images/oak_4.webp", "/images/oak_5.webp"];
+const IMGS = ["/images/oak_1.webp", "/images/oak_2.webp", "/images/oak_3.webp", "/images/oak_4.webp", "/images/oak_5.webp", "/images/oak_6.webp"];
 
 export default function OakCaseIsland({ oakData, lang }) {
   const heroRef  = useRef(null);
