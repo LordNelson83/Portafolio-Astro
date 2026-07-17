@@ -1,6 +1,12 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+const VIDEO_LABELS = {
+  sv: { eyebrow: "OAK 3D Gymplanerare", title: "Fran Figma-prototyp till interaktivt flode", caption: "Skarminspelning av det interaktiva Hi-Fi-prototypet, byggt i Figma. Visar rumskonfiguration, produktkatalog och 3D-visualisering." },
+  en: { eyebrow: "OAK 3D Gymplanerare", title: "From Figma prototype to interactive flow", caption: "Screen recording of the interactive Hi-Fi prototype, built in Figma. Shows room configuration, product catalog, and 3D visualization." },
+  es: { eyebrow: "OAK 3D Gymplanerare", title: "De prototipo en Figma a flujo interactivo", caption: "Grabacion de pantalla del prototipo interactivo Hi-Fi, construido en Figma. Muestra la configuracion de sala, el catalogo de productos y la visualizacion 3D." },
+};
 
 export default function UxUiDesignIsland({ ux, lang }) {
+  const videoLabels = VIDEO_LABELS[lang] || VIDEO_LABELS.sv;
 
   const statsRef    = useRef([]);
   const sectionsRef = useRef([]);
@@ -49,32 +55,52 @@ export default function UxUiDesignIsland({ ux, lang }) {
       {/* SECCIONES */}
       <div className="profil-sections">
         {ux.sections.map((sec, i) => (
-          <article
-            key={sec.num}
-            className="profil-section"
-            ref={el => sectionsRef.current[i] = el}
-            style={{ "--delay": `${i * 0.15}s` }}
-          >
-            <div className="profil-section__left">
-              <span className="profil-section__num">{sec.num}</span>
-              <div className="profil-section__header">
-                <p className="profil-section__eyebrow">{sec.eyebrow}</p>
-                <div className="profil-section__title-group">
-                  <p className="profil-section__institution">{sec.institution}</p>
-                  <h2 className="profil-section__title">{sec.title}</h2>
+          <React.Fragment key={sec.num}>
+            <article
+              className="profil-section"
+              ref={el => sectionsRef.current[i] = el}
+              style={{ "--delay": `${i * 0.15}s` }}
+            >
+              <div className="profil-section__left">
+                <span className="profil-section__num">{sec.num}</span>
+                <div className="profil-section__header">
+                  <p className="profil-section__eyebrow">{sec.eyebrow}</p>
+                  <div className="profil-section__title-group">
+                    <p className="profil-section__institution">{sec.institution}</p>
+                    <h2 className="profil-section__title">{sec.title}</h2>
+                  </div>
+                  <div className="profil-section__divider" aria-hidden="true" />
                 </div>
-                <div className="profil-section__divider" aria-hidden="true" />
               </div>
-            </div>
-            <div className="profil-section__right">
-              {sec.paragraphs.map((p, j) => (
-                <p key={j} className={`profil-section__para${j === 0 ? " profil-section__para--lead" : ""}`}>
-                  {p}
-                </p>
-              ))}
-              <span className="profil-section__tag">{sec.tag}</span>
-            </div>
-          </article>
+              <div className="profil-section__right">
+                {sec.paragraphs.map((p, j) => (
+                  <p key={j} className={`profil-section__para${j === 0 ? " profil-section__para--lead" : ""}`}>
+                    {p}
+                  </p>
+                ))}
+                <span className="profil-section__tag">{sec.tag}</span>
+              </div>
+            </article>
+
+            {i === 0 && (
+              <section className="profil-video" aria-label={videoLabels.title}>
+                <p className="profil-video__eyebrow">{videoLabels.eyebrow}</p>
+                <h2 className="profil-video__title">{videoLabels.title}</h2>
+                <div className="profil-video__frame">
+                  <video
+                    className="profil-video__player"
+                    src="/Gymplanerare_web.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-label={videoLabels.caption}
+                  />
+                </div>
+                <p className="profil-video__caption">{videoLabels.caption}</p>
+              </section>
+            )}
+          </React.Fragment>
         ))}
       </div>
 
