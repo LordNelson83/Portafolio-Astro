@@ -102,7 +102,7 @@ export default function UxUiDesignIsland({ ux, lang }) {
                   <video
                     ref={(el) => { if (el) el.muted = true; }}
                     className="profil-video__player"
-                    src="/Gymplanerare_web.mp4"
+                    src="/gymplanerare-demo.mp4"
                     autoPlay
                     muted
                     loop
