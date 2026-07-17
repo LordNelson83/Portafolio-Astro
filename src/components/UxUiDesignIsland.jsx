@@ -88,6 +88,7 @@ export default function UxUiDesignIsland({ ux, lang }) {
                 <h2 className="profil-video__title">{videoLabels.title}</h2>
                 <div className="profil-video__frame">
                   <video
+                    ref={(el) => { if (el) el.muted = true; }}
                     className="profil-video__player"
                     src="/Gymplanerare_web.mp4"
                     autoPlay
