@@ -1,4 +1,10 @@
 import React, { useEffect, useRef } from "react";
+const SOLENIA_LABELS = {
+  sv: "Se live på Solenia",
+  en: "See Solenia live",
+  es: "Ver Solenia en vivo",
+};
+
 const VIDEO_LABELS = {
   sv: { eyebrow: "OAK 3D Gymplanerare", title: "Fran Figma-prototyp till interaktivt flode", caption: "Skarminspelning av det interaktiva Hi-Fi-prototypet, byggt i Figma. Visar rumskonfiguration, produktkatalog och 3D-visualisering." },
   en: { eyebrow: "OAK 3D Gymplanerare", title: "From Figma prototype to interactive flow", caption: "Screen recording of the interactive Hi-Fi prototype, built in Figma. Shows room configuration, product catalog, and 3D visualization." },
@@ -7,6 +13,7 @@ const VIDEO_LABELS = {
 
 export default function UxUiDesignIsland({ ux, lang }) {
   const videoLabels = VIDEO_LABELS[lang] || VIDEO_LABELS.sv;
+  const soleniaLabel = SOLENIA_LABELS[lang] || SOLENIA_LABELS.sv;
 
   const statsRef    = useRef([]);
   const sectionsRef = useRef([]);
@@ -79,6 +86,11 @@ export default function UxUiDesignIsland({ ux, lang }) {
                   </p>
                 ))}
                 <span className="profil-section__tag">{sec.tag}</span>
+                {i === 1 && (
+                  <a href={"/" + lang + "/grafiskproduktion#ehandel"} className="profil-section__link">
+                    {soleniaLabel} →
+                  </a>
+                )}
               </div>
             </article>
 

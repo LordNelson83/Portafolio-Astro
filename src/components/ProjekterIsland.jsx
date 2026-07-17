@@ -220,7 +220,7 @@ export default function ProjekterIsland({ pk, lang }) {
           const num   = String(pi + 2).padStart(2, "0");
 
           return (
-            <section key={id} className="pk-project"
+            <section key={id} id={id} className="pk-project"
               ref={el => projRefs.current[pi] = el}
               style={{ "--accent": color }}
               aria-label={`Projekt ${num} — ${proj.title}`}>
