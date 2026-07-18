@@ -728,3 +728,94 @@
   .kt-avail__sep { width: 100%; height: 0.8px; }
   .kt-avail__date { font-size: 13px; }
 }
+
+
+/* -- Formulario de feedback -- */
+.kt-feedback {
+  max-width: 640px;
+  margin: 80px auto 40px;
+  padding: 0 24px;
+}
+.kt-feedback__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent, #ffa205);
+  margin: 0 0 8px;
+}
+.kt-feedback__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 4vw, 32px);
+  color: #fff;
+  margin: 0 0 8px;
+}
+.kt-feedback__sub {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+/* Campo trampa para bots: invisible para humanos, presente para bots */
+.kt-feedback__hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.kt-feedback__form textarea,
+.kt-feedback__form input[type="text"],
+.kt-feedback__form input[type="email"] {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 12px 14px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+.kt-feedback__form textarea::placeholder,
+.kt-feedback__form input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.kt-feedback__form textarea:focus,
+.kt-feedback__form input:focus {
+  outline: 2px solid var(--accent, #ffa205);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+.kt-feedback__row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.kt-feedback__row input {
+  flex: 1;
+  min-width: 180px;
+}
+.kt-feedback__form button {
+  background: var(--accent, #ffa205);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.kt-feedback__form button:hover {
+  opacity: 0.85;
+}
+.kt-feedback__status {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--accent, #ffa205);
+  min-height: 20px;
+}
+

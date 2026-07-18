@@ -3,11 +3,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getLangPaths, useTranslations } from "../../i18n/utils";
 import "../../pagesCSS/Kontakta.css";
 
+const FEEDBACK_LABELS = {
+  sv: { eyebrow: "Feedback", title: "Vad tycker du?", sub: "Har du några tankar om portfoliot? Jag läser allt.", placeholder: "Skriv din feedback här...", rolePlaceholder: "Din roll (valfritt)", emailPlaceholder: "E-post (valfritt, om du vill ha svar)", submit: "Skicka", success: "Tack för din feedback!", error: "Något gick fel, försök igen." },
+  en: { eyebrow: "Feedback", title: "What do you think?", sub: "Any thoughts on the portfolio? I read everything.", placeholder: "Write your feedback here...", rolePlaceholder: "Your role (optional)", emailPlaceholder: "Email (optional, if you want a reply)", submit: "Send", success: "Thanks for your feedback!", error: "Something went wrong, try again." },
+  es: { eyebrow: "Feedback", title: "¿Qué opinas?", sub: "¿Alguna idea sobre el portafolio? Leo todo.", placeholder: "Escribe tu feedback aquí...", rolePlaceholder: "Tu rol (opcional)", emailPlaceholder: "Correo (opcional, si quieres respuesta)", submit: "Enviar", success: "¡Gracias por tu feedback!", error: "Algo salió mal, intenta de nuevo." },
+};
+
+
 export function getStaticPaths() {
   return getLangPaths();
 }
 
 const { lang } = Astro.params;
+const feedbackLabels = FEEDBACK_LABELS[lang] || FEEDBACK_LABELS.sv;
 const t = useTranslations(lang);
 
 const statsItems  = t("contact", "statsItems");
@@ -80,7 +88,60 @@ const SOCIAL = [
       </div>
     </div>
   </div>
+
+    <div class="kt-feedback js-reveal">
+      <p class="kt-feedback__eyebrow">{feedbackLabels.eyebrow}</p>
+      <h2 class="kt-feedback__title">{feedbackLabels.title}</h2>
+      <p class="kt-feedback__sub">{feedbackLabels.sub}</p>
+      <form
+        name="portfolio-feedback"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="kt-feedback__form"
+        id="feedback-form"
+      >
+        <input type="hidden" name="form-name" value="portfolio-feedback" />
+        <p class="kt-feedback__hidden">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+        <textarea
+          name="message"
+          required
+          rows="4"
+          placeholder={feedbackLabels.placeholder}
+        ></textarea>
+        <div class="kt-feedback__row">
+          <input type="text" name="role" placeholder={feedbackLabels.rolePlaceholder} />
+          <input type="email" name="email" placeholder={feedbackLabels.emailPlaceholder} />
+        </div>
+        <button type="submit">{feedbackLabels.submit}</button>
+        <p class="kt-feedback__status" id="feedback-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
 </BaseLayout>
+
+<script define:vars={{ feedbackLabels }}>
+  const form = document.getElementById("feedback-form");
+  const status = document.getElementById("feedback-status");
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(data).toString(),
+        });
+        status.textContent = feedbackLabels.success;
+        form.reset();
+      } catch (err) {
+        status.textContent = feedbackLabels.error;
+      }
+    });
+  }
+</script>
 
 <script>
   const obs = new IntersectionObserver(
